@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/bobby/CLionProjects/spacetag/NFCWrapper/ctypeswrapper.cpp
+sptag/nfc/taguidextractor.h
+/home/bobby/CLionProjects/spacetag/NFCWrapper/sptag/nfc/taguidextractor.h
+
+/home/bobby/CLionProjects/spacetag/NFCWrapper/sptag/nfc/taguidextractor.h
+cmath
+-
+iostream
+-
+nfc/nfc.h
+-
+

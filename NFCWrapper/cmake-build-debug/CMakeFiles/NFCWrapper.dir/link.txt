@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC -g  -shared -Wl,-soname,libNFCWrapper.so -o libNFCWrapper.so CMakeFiles/NFCWrapper.dir/ctypeswrapper.cpp.o -lnfc 
