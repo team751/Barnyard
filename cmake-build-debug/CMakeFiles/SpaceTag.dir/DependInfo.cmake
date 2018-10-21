@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/bobby/CLionProjects/SpaceTag/main.cpp" "/home/bobby/CLionProjects/SpaceTag/cmake-build-debug/CMakeFiles/SpaceTag.dir/main.cpp.o"
-  "/home/bobby/CLionProjects/SpaceTag/sptag/nfc/taguidextractor.cpp" "/home/bobby/CLionProjects/SpaceTag/cmake-build-debug/CMakeFiles/SpaceTag.dir/sptag/nfc/taguidextractor.cpp.o"
+  "/home/bobby/CLionProjects/spacetagnfcwrapper/sptag/nfc/taguidextractor.cpp" "/home/bobby/CLionProjects/spacetag/cmake-build-debug/CMakeFiles/SpaceTag.dir/home/bobby/CLionProjects/spacetagnfcwrapper/sptag/nfc/taguidextractor.cpp.o"
+  "/home/bobby/CLionProjects/spacetag/main.cpp" "/home/bobby/CLionProjects/spacetag/cmake-build-debug/CMakeFiles/SpaceTag.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

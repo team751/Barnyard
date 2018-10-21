@@ -34,19 +34,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /home/bobby/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/182.4323.58/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /home/bobby/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/182.4505.18/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /home/bobby/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/182.4323.58/bin/cmake/linux/bin/cmake -E remove -f
+RM = /home/bobby/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/182.4505.18/bin/cmake/linux/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/bobby/CLionProjects/SpaceTag
+CMAKE_SOURCE_DIR = /home/bobby/CLionProjects/spacetag
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/bobby/CLionProjects/SpaceTag/cmake-build-debug
+CMAKE_BINARY_DIR = /home/bobby/CLionProjects/spacetag/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/SpaceTag.dir/depend.make
@@ -59,43 +59,43 @@ include CMakeFiles/SpaceTag.dir/flags.make
 
 CMakeFiles/SpaceTag.dir/main.cpp.o: CMakeFiles/SpaceTag.dir/flags.make
 CMakeFiles/SpaceTag.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bobby/CLionProjects/SpaceTag/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/SpaceTag.dir/main.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SpaceTag.dir/main.cpp.o -c /home/bobby/CLionProjects/SpaceTag/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bobby/CLionProjects/spacetag/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/SpaceTag.dir/main.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SpaceTag.dir/main.cpp.o -c /home/bobby/CLionProjects/spacetag/main.cpp
 
 CMakeFiles/SpaceTag.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SpaceTag.dir/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/bobby/CLionProjects/SpaceTag/main.cpp > CMakeFiles/SpaceTag.dir/main.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/bobby/CLionProjects/spacetag/main.cpp > CMakeFiles/SpaceTag.dir/main.cpp.i
 
 CMakeFiles/SpaceTag.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SpaceTag.dir/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/bobby/CLionProjects/SpaceTag/main.cpp -o CMakeFiles/SpaceTag.dir/main.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/bobby/CLionProjects/spacetag/main.cpp -o CMakeFiles/SpaceTag.dir/main.cpp.s
 
-CMakeFiles/SpaceTag.dir/sptag/nfc/taguidextractor.cpp.o: CMakeFiles/SpaceTag.dir/flags.make
-CMakeFiles/SpaceTag.dir/sptag/nfc/taguidextractor.cpp.o: ../sptag/nfc/taguidextractor.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bobby/CLionProjects/SpaceTag/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/SpaceTag.dir/sptag/nfc/taguidextractor.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SpaceTag.dir/sptag/nfc/taguidextractor.cpp.o -c /home/bobby/CLionProjects/SpaceTag/sptag/nfc/taguidextractor.cpp
+CMakeFiles/SpaceTag.dir/home/bobby/CLionProjects/spacetagnfcwrapper/sptag/nfc/taguidextractor.cpp.o: CMakeFiles/SpaceTag.dir/flags.make
+CMakeFiles/SpaceTag.dir/home/bobby/CLionProjects/spacetagnfcwrapper/sptag/nfc/taguidextractor.cpp.o: /home/bobby/CLionProjects/spacetagnfcwrapper/sptag/nfc/taguidextractor.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bobby/CLionProjects/spacetag/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/SpaceTag.dir/home/bobby/CLionProjects/spacetagnfcwrapper/sptag/nfc/taguidextractor.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SpaceTag.dir/home/bobby/CLionProjects/spacetagnfcwrapper/sptag/nfc/taguidextractor.cpp.o -c /home/bobby/CLionProjects/spacetagnfcwrapper/sptag/nfc/taguidextractor.cpp
 
-CMakeFiles/SpaceTag.dir/sptag/nfc/taguidextractor.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SpaceTag.dir/sptag/nfc/taguidextractor.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/bobby/CLionProjects/SpaceTag/sptag/nfc/taguidextractor.cpp > CMakeFiles/SpaceTag.dir/sptag/nfc/taguidextractor.cpp.i
+CMakeFiles/SpaceTag.dir/home/bobby/CLionProjects/spacetagnfcwrapper/sptag/nfc/taguidextractor.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SpaceTag.dir/home/bobby/CLionProjects/spacetagnfcwrapper/sptag/nfc/taguidextractor.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/bobby/CLionProjects/spacetagnfcwrapper/sptag/nfc/taguidextractor.cpp > CMakeFiles/SpaceTag.dir/home/bobby/CLionProjects/spacetagnfcwrapper/sptag/nfc/taguidextractor.cpp.i
 
-CMakeFiles/SpaceTag.dir/sptag/nfc/taguidextractor.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SpaceTag.dir/sptag/nfc/taguidextractor.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/bobby/CLionProjects/SpaceTag/sptag/nfc/taguidextractor.cpp -o CMakeFiles/SpaceTag.dir/sptag/nfc/taguidextractor.cpp.s
+CMakeFiles/SpaceTag.dir/home/bobby/CLionProjects/spacetagnfcwrapper/sptag/nfc/taguidextractor.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SpaceTag.dir/home/bobby/CLionProjects/spacetagnfcwrapper/sptag/nfc/taguidextractor.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/bobby/CLionProjects/spacetagnfcwrapper/sptag/nfc/taguidextractor.cpp -o CMakeFiles/SpaceTag.dir/home/bobby/CLionProjects/spacetagnfcwrapper/sptag/nfc/taguidextractor.cpp.s
 
 # Object files for target SpaceTag
 SpaceTag_OBJECTS = \
 "CMakeFiles/SpaceTag.dir/main.cpp.o" \
-"CMakeFiles/SpaceTag.dir/sptag/nfc/taguidextractor.cpp.o"
+"CMakeFiles/SpaceTag.dir/home/bobby/CLionProjects/spacetagnfcwrapper/sptag/nfc/taguidextractor.cpp.o"
 
 # External object files for target SpaceTag
 SpaceTag_EXTERNAL_OBJECTS =
 
 SpaceTag: CMakeFiles/SpaceTag.dir/main.cpp.o
-SpaceTag: CMakeFiles/SpaceTag.dir/sptag/nfc/taguidextractor.cpp.o
+SpaceTag: CMakeFiles/SpaceTag.dir/home/bobby/CLionProjects/spacetagnfcwrapper/sptag/nfc/taguidextractor.cpp.o
 SpaceTag: CMakeFiles/SpaceTag.dir/build.make
 SpaceTag: CMakeFiles/SpaceTag.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/bobby/CLionProjects/SpaceTag/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable SpaceTag"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/bobby/CLionProjects/spacetag/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable SpaceTag"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/SpaceTag.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -108,6 +108,6 @@ CMakeFiles/SpaceTag.dir/clean:
 .PHONY : CMakeFiles/SpaceTag.dir/clean
 
 CMakeFiles/SpaceTag.dir/depend:
-	cd /home/bobby/CLionProjects/SpaceTag/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/bobby/CLionProjects/SpaceTag /home/bobby/CLionProjects/SpaceTag /home/bobby/CLionProjects/SpaceTag/cmake-build-debug /home/bobby/CLionProjects/SpaceTag/cmake-build-debug /home/bobby/CLionProjects/SpaceTag/cmake-build-debug/CMakeFiles/SpaceTag.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/bobby/CLionProjects/spacetag/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/bobby/CLionProjects/spacetag /home/bobby/CLionProjects/spacetag /home/bobby/CLionProjects/spacetag/cmake-build-debug /home/bobby/CLionProjects/spacetag/cmake-build-debug /home/bobby/CLionProjects/spacetag/cmake-build-debug/CMakeFiles/SpaceTag.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/SpaceTag.dir/depend
 

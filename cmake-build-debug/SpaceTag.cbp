@@ -8,38 +8,38 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/home/bobby/CLionProjects/SpaceTag/cmake-build-debug"/>
+				<Option working_dir="/home/bobby/CLionProjects/spacetag/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/bobby/CLionProjects/SpaceTag/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/bobby/CLionProjects/SpaceTag/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/bobby/CLionProjects/SpaceTag/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/bobby/CLionProjects/SpaceTag/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/bobby/CLionProjects/spacetag/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/bobby/CLionProjects/spacetag/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/bobby/CLionProjects/spacetag/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/bobby/CLionProjects/spacetag/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/home/bobby/CLionProjects/SpaceTag/cmake-build-debug"/>
+				<Option working_dir="/home/bobby/CLionProjects/spacetag/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/bobby/CLionProjects/SpaceTag/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/bobby/CLionProjects/SpaceTag/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/bobby/CLionProjects/SpaceTag/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/bobby/CLionProjects/SpaceTag/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/bobby/CLionProjects/spacetag/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/bobby/CLionProjects/spacetag/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/bobby/CLionProjects/spacetag/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/bobby/CLionProjects/spacetag/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/home/bobby/CLionProjects/SpaceTag/cmake-build-debug"/>
+				<Option working_dir="/home/bobby/CLionProjects/spacetag/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/bobby/CLionProjects/SpaceTag/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/bobby/CLionProjects/SpaceTag/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/bobby/CLionProjects/SpaceTag/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/bobby/CLionProjects/SpaceTag/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/bobby/CLionProjects/spacetag/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/bobby/CLionProjects/spacetag/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/bobby/CLionProjects/spacetag/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/bobby/CLionProjects/spacetag/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="SpaceTag">
-				<Option output="/home/bobby/CLionProjects/SpaceTag/cmake-build-debug/SpaceTag" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/bobby/CLionProjects/SpaceTag/cmake-build-debug"/>
+				<Option output="/home/bobby/CLionProjects/spacetag/cmake-build-debug/SpaceTag" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/bobby/CLionProjects/spacetag/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -54,15 +54,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/bobby/CLionProjects/SpaceTag/cmake-build-debug/Makefile&quot;  VERBOSE=1 SpaceTag"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/bobby/CLionProjects/SpaceTag/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/bobby/CLionProjects/SpaceTag/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/bobby/CLionProjects/SpaceTag/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/bobby/CLionProjects/spacetag/cmake-build-debug/Makefile&quot;  VERBOSE=1 SpaceTag"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/bobby/CLionProjects/spacetag/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/bobby/CLionProjects/spacetag/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/bobby/CLionProjects/spacetag/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="SpaceTag/fast">
-				<Option output="/home/bobby/CLionProjects/SpaceTag/cmake-build-debug/SpaceTag" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/bobby/CLionProjects/SpaceTag/cmake-build-debug"/>
+				<Option output="/home/bobby/CLionProjects/spacetag/cmake-build-debug/SpaceTag" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/bobby/CLionProjects/spacetag/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -77,23 +77,23 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/bobby/CLionProjects/SpaceTag/cmake-build-debug/Makefile&quot;  VERBOSE=1 SpaceTag/fast"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/bobby/CLionProjects/SpaceTag/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/bobby/CLionProjects/SpaceTag/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/bobby/CLionProjects/SpaceTag/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/bobby/CLionProjects/spacetag/cmake-build-debug/Makefile&quot;  VERBOSE=1 SpaceTag/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/bobby/CLionProjects/spacetag/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/bobby/CLionProjects/spacetag/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/bobby/CLionProjects/spacetag/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/bobby/CLionProjects/SpaceTag/main.cpp">
+		<Unit filename="/home/bobby/CLionProjects/spacetag/main.cpp">
 			<Option target="SpaceTag"/>
 		</Unit>
-		<Unit filename="/home/bobby/CLionProjects/SpaceTag/sptag/nfc/taguidextractor.cpp">
+		<Unit filename="/home/bobby/CLionProjects/spacetagnfcwrapper/sptag/nfc/taguidextractor.cpp">
 			<Option target="SpaceTag"/>
 		</Unit>
-		<Unit filename="/home/bobby/CLionProjects/SpaceTag/sptag/nfc/taguidextractor.h">
+		<Unit filename="/home/bobby/CLionProjects/spacetagnfcwrapper/sptag/nfc/taguidextractor.h">
 			<Option target="SpaceTag"/>
 		</Unit>
-		<Unit filename="/home/bobby/CLionProjects/SpaceTag/CMakeLists.txt">
+		<Unit filename="/home/bobby/CLionProjects/spacetag/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>
