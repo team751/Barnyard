@@ -1,1 +1,0 @@
-/usr/bin/c++ -fPIC -g  -shared -Wl,-soname,libspacetagnfcwrapper.so -o libspacetagnfcwrapper.so CMakeFiles/spacetagnfcwrapper.dir/ctypeswrapper.cpp.o 

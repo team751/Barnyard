@@ -1,3 +1,0 @@
-/home/bobby/CLionProjects/spacetag/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/bobby/CLionProjects/spacetag/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/bobby/CLionProjects/spacetag/cmake-build-debug/CMakeFiles/SpaceTag.dir

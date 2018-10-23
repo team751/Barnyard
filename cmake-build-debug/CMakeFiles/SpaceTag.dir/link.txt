@@ -1,1 +1,0 @@
-/usr/bin/c++  -g   CMakeFiles/SpaceTag.dir/main.cpp.o CMakeFiles/SpaceTag.dir/home/bobby/CLionProjects/spacetagnfcwrapper/sptag/nfc/taguidextractor.cpp.o  -o SpaceTag -lnfc 
