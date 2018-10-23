@@ -72,7 +72,8 @@ namespace sptag {
                             static_cast<int>(byte)));
                 }
 
-                return std::stol(uid_string_buffer);
+                std::cout << uid_string_buffer << "\n";
+                return std::atol(uid_string_buffer.c_str());
             } else {
                 return -1;
             }

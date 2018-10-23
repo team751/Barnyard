@@ -34,19 +34,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /home/bobby/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/182.4505.18/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /home/bobby/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/183.3795.17/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /home/bobby/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/182.4505.18/bin/cmake/linux/bin/cmake -E remove -f
+RM = /home/bobby/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/183.3795.17/bin/cmake/linux/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/bobby/CLionProjects/spacetag/NFCWrapper
+CMAKE_SOURCE_DIR = /home/bobby/CLionProjects/SpaceTag/NFCWrapper
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/bobby/CLionProjects/spacetag/NFCWrapper/cmake-build-debug
+CMAKE_BINARY_DIR = /home/bobby/CLionProjects/SpaceTag/NFCWrapper/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/NFCWrapper.dir/depend.make
@@ -59,28 +59,43 @@ include CMakeFiles/NFCWrapper.dir/flags.make
 
 CMakeFiles/NFCWrapper.dir/ctypeswrapper.cpp.o: CMakeFiles/NFCWrapper.dir/flags.make
 CMakeFiles/NFCWrapper.dir/ctypeswrapper.cpp.o: ../ctypeswrapper.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bobby/CLionProjects/spacetag/NFCWrapper/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/NFCWrapper.dir/ctypeswrapper.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/NFCWrapper.dir/ctypeswrapper.cpp.o -c /home/bobby/CLionProjects/spacetag/NFCWrapper/ctypeswrapper.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bobby/CLionProjects/SpaceTag/NFCWrapper/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/NFCWrapper.dir/ctypeswrapper.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/NFCWrapper.dir/ctypeswrapper.cpp.o -c /home/bobby/CLionProjects/SpaceTag/NFCWrapper/ctypeswrapper.cpp
 
 CMakeFiles/NFCWrapper.dir/ctypeswrapper.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/NFCWrapper.dir/ctypeswrapper.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/bobby/CLionProjects/spacetag/NFCWrapper/ctypeswrapper.cpp > CMakeFiles/NFCWrapper.dir/ctypeswrapper.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/bobby/CLionProjects/SpaceTag/NFCWrapper/ctypeswrapper.cpp > CMakeFiles/NFCWrapper.dir/ctypeswrapper.cpp.i
 
 CMakeFiles/NFCWrapper.dir/ctypeswrapper.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/NFCWrapper.dir/ctypeswrapper.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/bobby/CLionProjects/spacetag/NFCWrapper/ctypeswrapper.cpp -o CMakeFiles/NFCWrapper.dir/ctypeswrapper.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/bobby/CLionProjects/SpaceTag/NFCWrapper/ctypeswrapper.cpp -o CMakeFiles/NFCWrapper.dir/ctypeswrapper.cpp.s
+
+CMakeFiles/NFCWrapper.dir/sptag/nfc/taguidextractor.cpp.o: CMakeFiles/NFCWrapper.dir/flags.make
+CMakeFiles/NFCWrapper.dir/sptag/nfc/taguidextractor.cpp.o: ../sptag/nfc/taguidextractor.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bobby/CLionProjects/SpaceTag/NFCWrapper/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/NFCWrapper.dir/sptag/nfc/taguidextractor.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/NFCWrapper.dir/sptag/nfc/taguidextractor.cpp.o -c /home/bobby/CLionProjects/SpaceTag/NFCWrapper/sptag/nfc/taguidextractor.cpp
+
+CMakeFiles/NFCWrapper.dir/sptag/nfc/taguidextractor.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/NFCWrapper.dir/sptag/nfc/taguidextractor.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/bobby/CLionProjects/SpaceTag/NFCWrapper/sptag/nfc/taguidextractor.cpp > CMakeFiles/NFCWrapper.dir/sptag/nfc/taguidextractor.cpp.i
+
+CMakeFiles/NFCWrapper.dir/sptag/nfc/taguidextractor.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/NFCWrapper.dir/sptag/nfc/taguidextractor.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/bobby/CLionProjects/SpaceTag/NFCWrapper/sptag/nfc/taguidextractor.cpp -o CMakeFiles/NFCWrapper.dir/sptag/nfc/taguidextractor.cpp.s
 
 # Object files for target NFCWrapper
 NFCWrapper_OBJECTS = \
-"CMakeFiles/NFCWrapper.dir/ctypeswrapper.cpp.o"
+"CMakeFiles/NFCWrapper.dir/ctypeswrapper.cpp.o" \
+"CMakeFiles/NFCWrapper.dir/sptag/nfc/taguidextractor.cpp.o"
 
 # External object files for target NFCWrapper
 NFCWrapper_EXTERNAL_OBJECTS =
 
 libNFCWrapper.so: CMakeFiles/NFCWrapper.dir/ctypeswrapper.cpp.o
+libNFCWrapper.so: CMakeFiles/NFCWrapper.dir/sptag/nfc/taguidextractor.cpp.o
 libNFCWrapper.so: CMakeFiles/NFCWrapper.dir/build.make
 libNFCWrapper.so: CMakeFiles/NFCWrapper.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/bobby/CLionProjects/spacetag/NFCWrapper/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX shared library libNFCWrapper.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/bobby/CLionProjects/SpaceTag/NFCWrapper/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX shared library libNFCWrapper.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/NFCWrapper.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -93,6 +108,6 @@ CMakeFiles/NFCWrapper.dir/clean:
 .PHONY : CMakeFiles/NFCWrapper.dir/clean
 
 CMakeFiles/NFCWrapper.dir/depend:
-	cd /home/bobby/CLionProjects/spacetag/NFCWrapper/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/bobby/CLionProjects/spacetag/NFCWrapper /home/bobby/CLionProjects/spacetag/NFCWrapper /home/bobby/CLionProjects/spacetag/NFCWrapper/cmake-build-debug /home/bobby/CLionProjects/spacetag/NFCWrapper/cmake-build-debug /home/bobby/CLionProjects/spacetag/NFCWrapper/cmake-build-debug/CMakeFiles/NFCWrapper.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/bobby/CLionProjects/SpaceTag/NFCWrapper/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/bobby/CLionProjects/SpaceTag/NFCWrapper /home/bobby/CLionProjects/SpaceTag/NFCWrapper /home/bobby/CLionProjects/SpaceTag/NFCWrapper/cmake-build-debug /home/bobby/CLionProjects/SpaceTag/NFCWrapper/cmake-build-debug /home/bobby/CLionProjects/SpaceTag/NFCWrapper/cmake-build-debug/CMakeFiles/NFCWrapper.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/NFCWrapper.dir/depend
 

@@ -3,6 +3,6 @@ project(NFCWrapper)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_library(NFCWrapper SHARED ctypeswrapper.cpp)
+add_library(NFCWrapper SHARED ctypeswrapper.cpp sptag/nfc/taguidextractor.cpp)
 
 TARGET_LINK_LIBRARIES(NFCWrapper nfc)

@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/NFCWrapper.dir/ctypeswrapper.cpp.o"
+  "CMakeFiles/NFCWrapper.dir/sptag/nfc/taguidextractor.cpp.o"
   "libNFCWrapper.pdb"
   "libNFCWrapper.so"
 )
