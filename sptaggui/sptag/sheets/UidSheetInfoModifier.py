@@ -1,50 +1,42 @@
-from googleapiclient.discovery import build
-from httplib2 import Http
-from oauth2client import file, tools, client
+import gspread
 
-SCOPES = 'https://www.googleapis.com/auth/spreadsheets.readonly'
-SPREADSHEET_ID = "1zRSYqFLEEHLTDiMwv_tjmZ2aUK3V4LZ9E4OVBDFX_OI"
-SPREADSHEET_RANGE_PREFIX = "Test!A"
-SPREADSHEET_UID_SEARCH_RANGE = SPREADSHEET_RANGE_PREFIX + "1:A"
+from os import getcwd
+
+from oauth2client.service_account import ServiceAccountCredentials
+
+SCOPES = ['https://spreadsheets.google.com/feeds',
+         'https://www.googleapis.com/auth/drive']
+SPREADSHEET_KEY = "1zRSYqFLEEHLTDiMwv_tjmZ2aUK3V4LZ9E4OVBDFX_OI"
 
 
 class UidSheetInfoModifier:
-    _credentials = None
     _sheets_service = None
+    _current_sheet = None
 
     class PartInfo(object):
         uid = None
         name = None
         description = None
         location = None
-        imageUrl = None
+        image_url = None
 
         def __init__(self, uid=None, name=None, description=None, location=None,
-                     imageUrl=None):
+                     image_url=None):
             self.uid = uid
             self.name = name
             self.description = description
             self.location = location
-            self.imageUrl = imageUrl
-
+            self.image_url = image_url
 
     def __init__(self):
-        cred_file = file.Storage("credentials.json")
-        self._credentials = cred_file.get()
+        credentials = ServiceAccountCredentials.\
+            from_json_keyfile_name("client_secret.json", SCOPES)
 
-        if not self._credentials or self._credentials.invalid:
-            flow = client.flow_from_clientsecrets('credentials.json', SCOPES)
-            self._credentials = tools.run_flow(flow, cred_file)
-
-        self._sheets_service = build('sheets', 'v4',
-                                     http=self._credentials.authorize(Http()))
+        self._sheets_service = gspread.authorize(credentials)
+        self._current_sheet = self._sheets_service.open_by_key(SPREADSHEET_KEY).sheet1
 
     def _uid_to_row_number(self, uid):
-        rawUidGetResult = self._sheets_service.spreadsheets().values().get(
-                                            spreadsheetId=SPREADSHEET_ID,
-                                            range=SPREADSHEET_UID_SEARCH_RANGE).\
-                                            execute()
-        uidsFound = rawUidGetResult.get('values', [])
+        uidsFound = self._current_sheet.col_values(1)
 
         if uidsFound:
             for i in range(len(uidsFound)):
@@ -54,20 +46,13 @@ class UidSheetInfoModifier:
         # No UIDs representing this UID found in this table.
         return None
 
-    def return_part_info(self, uid):
+    def get_part_info(self, uid):
         rowNumToUse = self._uid_to_row_number(uid)
 
         if not rowNumToUse:
             return None
 
-        SPREADSHEET_PART_INFO_RANGE = SPREADSHEET_RANGE_PREFIX + \
-                                      str(rowNumToUse) + ":" + "E" + str(rowNumToUse)
-
-        rawPartInfoGetResult = self._sheets_service.spreadsheets().values().get(
-                                            spreadsheetId=SPREADSHEET_ID,
-                                            range=SPREADSHEET_PART_INFO_RANGE).\
-                                            execute()
-        partInfoArray = rawPartInfoGetResult.get('values', [])
+        partInfoArray = self._current_sheet.row_values(rowNumToUse)
 
         if len(partInfoArray) >= 5:
             return UidSheetInfoModifier.PartInfo(partInfoArray[0],

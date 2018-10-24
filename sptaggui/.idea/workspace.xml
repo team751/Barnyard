@@ -2,78 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b9ee2bc1-47f5-42d1-b90c-01ca24cfe839" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../.idea/codeStyles/Project.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NFCWrapper/.idea/codeStyles/Project.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../NFCWrapper/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../NFCWrapper/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NFCWrapper/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../NFCWrapper/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NFCWrapper/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../NFCWrapper/cmake-build-debug/CMakeCache.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NFCWrapper/cmake-build-debug/CMakeFiles/3.12.2/CMakeCCompiler.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NFCWrapper/cmake-build-debug/CMakeFiles/3.12.2/CMakeCXXCompiler.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NFCWrapper/cmake-build-debug/CMakeFiles/3.12.2/CMakeDetermineCompilerABI_C.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NFCWrapper/cmake-build-debug/CMakeFiles/3.12.2/CMakeDetermineCompilerABI_CXX.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NFCWrapper/cmake-build-debug/CMakeFiles/3.12.2/CMakeSystem.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NFCWrapper/cmake-build-debug/CMakeFiles/3.12.2/CompilerIdC/CMakeCCompilerId.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NFCWrapper/cmake-build-debug/CMakeFiles/3.12.2/CompilerIdC/a.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NFCWrapper/cmake-build-debug/CMakeFiles/3.12.2/CompilerIdCXX/CMakeCXXCompilerId.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NFCWrapper/cmake-build-debug/CMakeFiles/3.12.2/CompilerIdCXX/a.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NFCWrapper/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../NFCWrapper/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NFCWrapper/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/../NFCWrapper/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NFCWrapper/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../NFCWrapper/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NFCWrapper/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/../NFCWrapper/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NFCWrapper/cmake-build-debug/CMakeFiles/NFCWrapper.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/../NFCWrapper/cmake-build-debug/CMakeFiles/NFCWrapper.dir/CXX.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NFCWrapper/cmake-build-debug/CMakeFiles/NFCWrapper.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../NFCWrapper/cmake-build-debug/CMakeFiles/NFCWrapper.dir/DependInfo.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NFCWrapper/cmake-build-debug/CMakeFiles/NFCWrapper.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/../NFCWrapper/cmake-build-debug/CMakeFiles/NFCWrapper.dir/build.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NFCWrapper/cmake-build-debug/CMakeFiles/NFCWrapper.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../NFCWrapper/cmake-build-debug/CMakeFiles/NFCWrapper.dir/cmake_clean.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NFCWrapper/cmake-build-debug/CMakeFiles/NFCWrapper.dir/ctypeswrapper.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../NFCWrapper/cmake-build-debug/CMakeFiles/NFCWrapper.dir/ctypeswrapper.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NFCWrapper/cmake-build-debug/CMakeFiles/NFCWrapper.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/../NFCWrapper/cmake-build-debug/CMakeFiles/NFCWrapper.dir/depend.internal" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NFCWrapper/cmake-build-debug/CMakeFiles/NFCWrapper.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/../NFCWrapper/cmake-build-debug/CMakeFiles/NFCWrapper.dir/depend.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NFCWrapper/cmake-build-debug/CMakeFiles/NFCWrapper.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../NFCWrapper/cmake-build-debug/CMakeFiles/NFCWrapper.dir/link.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NFCWrapper/cmake-build-debug/CMakeFiles/NFCWrapper.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/../NFCWrapper/cmake-build-debug/CMakeFiles/NFCWrapper.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NFCWrapper/cmake-build-debug/CMakeFiles/TargetDirectories.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../NFCWrapper/cmake-build-debug/CMakeFiles/TargetDirectories.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NFCWrapper/cmake-build-debug/CMakeFiles/clion-environment.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../NFCWrapper/cmake-build-debug/CMakeFiles/clion-environment.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NFCWrapper/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../NFCWrapper/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NFCWrapper/cmake-build-debug/CMakeFiles/feature_tests.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../NFCWrapper/cmake-build-debug/CMakeFiles/feature_tests.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NFCWrapper/cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/../NFCWrapper/cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NFCWrapper/cmake-build-debug/CMakeFiles/spacetagnfcwrapper.dir/DependInfo.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NFCWrapper/cmake-build-debug/CMakeFiles/spacetagnfcwrapper.dir/build.make" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NFCWrapper/cmake-build-debug/CMakeFiles/spacetagnfcwrapper.dir/cmake_clean.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NFCWrapper/cmake-build-debug/CMakeFiles/spacetagnfcwrapper.dir/depend.make" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NFCWrapper/cmake-build-debug/CMakeFiles/spacetagnfcwrapper.dir/flags.make" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NFCWrapper/cmake-build-debug/CMakeFiles/spacetagnfcwrapper.dir/link.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NFCWrapper/cmake-build-debug/CMakeFiles/spacetagnfcwrapper.dir/progress.make" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NFCWrapper/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/../NFCWrapper/cmake-build-debug/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NFCWrapper/cmake-build-debug/NFCWrapper.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/../NFCWrapper/cmake-build-debug/NFCWrapper.cbp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NFCWrapper/cmake-build-debug/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../NFCWrapper/cmake-build-debug/cmake_install.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NFCWrapper/cmake-build-debug/libNFCWrapper.so" beforeDir="false" afterPath="$PROJECT_DIR$/../NFCWrapper/cmake-build-debug/libNFCWrapper.so" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NFCWrapper/sptag/nfc/taguidextractor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../NFCWrapper/sptag/nfc/taguidextractor.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../cmake-build-debug/CMakeCache.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cmake-build-debug/CMakeFiles/3.12.2/CMakeCCompiler.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cmake-build-debug/CMakeFiles/3.12.2/CMakeCXXCompiler.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cmake-build-debug/CMakeFiles/3.12.2/CMakeDetermineCompilerABI_C.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cmake-build-debug/CMakeFiles/3.12.2/CMakeDetermineCompilerABI_CXX.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cmake-build-debug/CMakeFiles/3.12.2/CMakeSystem.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cmake-build-debug/CMakeFiles/3.12.2/CompilerIdC/CMakeCCompilerId.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cmake-build-debug/CMakeFiles/3.12.2/CompilerIdC/a.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cmake-build-debug/CMakeFiles/3.12.2/CompilerIdCXX/CMakeCXXCompilerId.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cmake-build-debug/CMakeFiles/3.12.2/CompilerIdCXX/a.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/../cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cmake-build-debug/CMakeFiles/SpaceTag.dir/DependInfo.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cmake-build-debug/CMakeFiles/SpaceTag.dir/build.make" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cmake-build-debug/CMakeFiles/SpaceTag.dir/cmake_clean.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cmake-build-debug/CMakeFiles/SpaceTag.dir/depend.make" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cmake-build-debug/CMakeFiles/SpaceTag.dir/flags.make" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cmake-build-debug/CMakeFiles/SpaceTag.dir/link.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cmake-build-debug/CMakeFiles/SpaceTag.dir/progress.make" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cmake-build-debug/CMakeFiles/TargetDirectories.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cmake-build-debug/CMakeFiles/clion-environment.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../cmake-build-debug/CMakeFiles/clion-environment.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cmake-build-debug/CMakeFiles/feature_tests.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../cmake-build-debug/CMakeFiles/feature_tests.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sptag/gui/TagInfoScreen.py" beforeDir="false" afterPath="$PROJECT_DIR$/sptag/gui/TagInfoScreen.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sptag/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/sptag/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sptag/sheets/UidSheetInfoModifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/sptag/sheets/UidSheetInfoModifier.py" afterDir="false" />
     </list>
@@ -84,16 +15,16 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/sptaggui$Python3Local.coverage" NAME="Python3Local Coverage Results" MODIFIED="1540266734255" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/sptag" />
+    <SUITE FILE_PATH="coverage/sptaggui$Python3Local.coverage" NAME="Python3Local Coverage Results" MODIFIED="1540353425312" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/sptag" />
     <SUITE FILE_PATH="coverage/sptaggui$Unnamed.coverage" NAME="Python3Local Coverage Results" MODIFIED="1539638770803" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/sptag" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sptag/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+            <state relative-caret-position="75">
+              <caret line="3" column="49" selection-start-line="3" selection-start-column="49" selection-end-line="3" selection-end-column="49" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -104,21 +35,22 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sptag/gui/TagInfoScreen.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="4" column="5" selection-start-line="4" selection-start-column="5" selection-end-line="4" selection-end-column="11" />
+            <state relative-caret-position="1575">
+              <caret line="72" column="70" selection-start-line="72" selection-start-column="70" selection-end-line="72" selection-end-column="70" />
+              <folding>
+                <element signature="e#0#14#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/sptag/sheets/UidSheetInfoModifier.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1850">
-              <caret line="74" column="17" selection-start-line="74" selection-start-column="17" selection-end-line="74" selection-end-column="17" />
+            <state relative-caret-position="200">
+              <caret line="8" column="63" selection-start-line="8" selection-start-column="63" selection-end-line="8" selection-end-column="63" />
               <folding>
-                <element signature="e#0#43#0" expanded="true" />
-                <marker date="1540262513968" expanded="true" signature="473:867" ph="..." />
-                <marker date="1540262513968" expanded="true" signature="1362:1931" ph="..." />
+                <element signature="e#0#14#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -152,6 +84,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="SIGN_OFF_COMMIT" value="true" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -159,17 +92,16 @@
         <option value="$PROJECT_DIR$/sptag/gui/CardInfoScreen.py" />
         <option value="$PROJECT_DIR$/sptag/nfc/__init__.py" />
         <option value="$PROJECT_DIR$/sptag/nfc/TagUidExtractor.py" />
-        <option value="$PROJECT_DIR$/sptag/sheets/UidSheetInfoModifier.py" />
-        <option value="$PROJECT_DIR$/sptag/gui/TagInfoScreen.py" />
         <option value="$PROJECT_DIR$/sptag/main.py" />
+        <option value="$PROJECT_DIR$/sptag/gui/TagInfoScreen.py" />
+        <option value="$PROJECT_DIR$/sptag/sheets/UidSheetInfoModifier.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="416" />
-    <option name="y" value="669" />
-    <option name="width" value="3830" />
-    <option name="height" value="1595" />
+    <option name="y" value="37" />
+    <option name="width" value="3840" />
+    <option name="height" value="2123" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -179,6 +111,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -191,29 +124,10 @@
               <item name="sptaggui" type="462c0819:PsiDirectoryNode" />
               <item name="sptag" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="sptaggui" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sptaggui" type="462c0819:PsiDirectoryNode" />
-              <item name="sptag" type="462c0819:PsiDirectoryNode" />
-              <item name="gui" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="sptaggui" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sptaggui" type="462c0819:PsiDirectoryNode" />
-              <item name="sptag" type="462c0819:PsiDirectoryNode" />
-              <item name="nfc" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="sptaggui" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sptaggui" type="462c0819:PsiDirectoryNode" />
-              <item name="sptag" type="462c0819:PsiDirectoryNode" />
-              <item name="sheets" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -223,6 +137,14 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="PyConsoleOptionsProvider">
+    <option name="myPythonConsoleState">
+      <console-settings module-name="sptaggui" is-module-sdk="true">
+        <option name="myUseModuleSdk" value="true" />
+        <option name="myModuleName" value="sptaggui" />
+      </console-settings>
+    </option>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -271,22 +193,23 @@
       <option name="presentableId" value="Default" />
       <updated>1539633047452</updated>
       <workItem from="1540258112034" duration="6276000" />
+      <workItem from="1540344204514" duration="6285000" />
+      <workItem from="1540352361907" duration="1092000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6276000" />
+    <option name="totallyTimeSpent" value="13653000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="37" width="3840" height="2123" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26687932" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2751196" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3285102" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.38263667" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -311,6 +234,26 @@
     <entry file="file://$PROJECT_DIR$/sptag/.gitignore">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/sptag/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="3" column="49" selection-start-line="3" selection-start-column="49" selection-end-line="3" selection-end-column="49" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sptag/gui/TagInfoScreen.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1575">
+          <caret line="72" column="70" selection-start-line="72" selection-start-column="70" selection-end-line="72" selection-end-column="70" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/sptag/nfc/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -326,27 +269,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/sptag/sheets/UidSheetInfoModifier.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1850">
-          <caret line="74" column="17" selection-start-line="74" selection-start-column="17" selection-end-line="74" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-            <marker date="1540262513968" expanded="true" signature="473:867" ph="..." />
-            <marker date="1540262513968" expanded="true" signature="1362:1931" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sptag/gui/TagInfoScreen.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="4" column="5" selection-start-line="4" selection-start-column="5" selection-end-line="4" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sptag/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        <state relative-caret-position="200">
+          <caret line="8" column="63" selection-start-line="8" selection-start-column="63" selection-end-line="8" selection-end-column="63" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
