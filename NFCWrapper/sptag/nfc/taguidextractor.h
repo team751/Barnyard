@@ -6,8 +6,11 @@
 #define SPACETAG_TAGUIDEXTRACTOR_H
 
 #include <cmath>
+#include <cstdlib>
 
 #include <iostream>
+#include <iomanip>
+#include <sstream>
 
 #include <nfc/nfc.h>
 
@@ -20,7 +23,7 @@ namespace sptag {
 
             bool init_device();
 
-            long get_uid_from_next_tag();
+            wchar_t *get_uid_from_next_tag();
 
         private:
             nfc_device *m_nfc_reader;

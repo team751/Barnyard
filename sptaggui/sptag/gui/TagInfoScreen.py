@@ -29,25 +29,31 @@ class TagInfoScreen():
         self._part_info_label_list.append(Label(self._window,
                                                 image=self._part_info_image))
 
-    def display_part(self, part_info):
+    def display_part(self, part_info, uid):
         self._part_info_label_list.clear()
 
-        self._part_info_label_list.append(Label(self._window,
-                                            text="UID:" + part_info.uid))
-        self._part_info_label_list.append(Label(self._window,
-                                            text="Name:" + part_info.name))
-        self._part_info_label_list.append(Label(self._window,
-                                            text="Description:" +
-                                                 part_info.description))
-        self._part_info_label_list.append(Label(self._window,
-                                            text="Location:" +
-                                                 part_info.location))
+        if part_info is None:
+            self._part_info_label_list.append(Label(self._window,
+                                        text="Couldn't find UID in database!"))
+            self._part_info_label_list.append(Label(self._window,
+                                        text="UID Scanned =" + uid))
+        else:
+            self._part_info_label_list.append(Label(self._window,
+                                                text="UID:" + part_info.uid))
+            self._part_info_label_list.append(Label(self._window,
+                                                text="Name:" + part_info.name))
+            self._part_info_label_list.append(Label(self._window,
+                                                text="Description:" +
+                                                     part_info.description))
+            self._part_info_label_list.append(Label(self._window,
+                                                text="Location:" +
+                                                     part_info.location))
 
-        self._generate_image_label(part_info.image_url, part_info.uid)
+            self._generate_image_label(part_info.image_url, part_info.uid)
 
         for part_info_label in self._part_info_label_list:
             # all objects part of this list should be a Label
-            assert part_info_label is Label
+            #assert part_info_label is Label
 
             part_info_label.pack()
 
@@ -55,9 +61,10 @@ class TagInfoScreen():
         while True:
             next_uid = self._tag_uid_extractor.get_uid_from_next_tag()
 
-            if next_uid != -1:
-                self.display_part(self._uid_sheet_info_modifier.\
-                                 get_part_info(next_uid))
+            if next_uid != None:
+                print("id=" + next_uid)
+                self.display_part(self._uid_sheet_info_modifier.
+                                 get_part_info(next_uid), next_uid)
             
 
     def _init_screen_elements(self):
@@ -74,6 +81,6 @@ class TagInfoScreen():
         self._uid_sheet_info_modifier = UidSheetInfoModifier()
 
         if self._tag_uid_extractor.init_device():
-            _thread.start_new_thread(self._get_next_nfc_tag_uid, None)
+            _thread.start_new_thread(self._get_next_nfc_tag_uid, (self, None))
         else:
             print("ERROR: Couldn't initialize NFC reader/writer!")

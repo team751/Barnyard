@@ -15,6 +15,8 @@ taguidextractor.h
 /home/bobby/CLionProjects/SpaceTag/NFCWrapper/sptag/nfc/taguidextractor.h
 cmath
 -
+cstdlib
+-
 iostream
 -
 nfc/nfc.h

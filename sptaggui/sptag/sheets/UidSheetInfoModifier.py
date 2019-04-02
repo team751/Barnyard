@@ -40,7 +40,8 @@ class UidSheetInfoModifier:
 
         if uidsFound:
             for i in range(len(uidsFound)):
-                if uid == int(uidsFound[i]):
+                if uidsFound[i].isdigit() and uid == uidsFound[i]:
+                    print("uid found " + str(uidsFound[i]) + "=" + str(uid) + " (" + str(i) + ")")
                     return i
 
         # No UIDs representing this UID found in this table.
@@ -49,10 +50,10 @@ class UidSheetInfoModifier:
     def get_part_info(self, uid):
         rowNumToUse = self._uid_to_row_number(uid)
 
-        if not rowNumToUse:
+        if rowNumToUse is None:
             return None
 
-        partInfoArray = self._current_sheet.row_values(rowNumToUse)
+        partInfoArray = self._current_sheet.row_values(rowNumToUse + 1)
 
         if len(partInfoArray) >= 5:
             return UidSheetInfoModifier.PartInfo(partInfoArray[0],
