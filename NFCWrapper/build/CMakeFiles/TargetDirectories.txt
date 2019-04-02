@@ -1,0 +1,3 @@
+/home/bobby/CLionProjects/SpaceTag/NFCWrapper/build/CMakeFiles/rebuild_cache.dir
+/home/bobby/CLionProjects/SpaceTag/NFCWrapper/build/CMakeFiles/NFCWrapper.dir
+/home/bobby/CLionProjects/SpaceTag/NFCWrapper/build/CMakeFiles/edit_cache.dir

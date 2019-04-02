@@ -2,7 +2,6 @@
 // Created by bobby on 10/14/18.
 //
 
-#include <sstream>
 #include "taguidextractor.h"
 
 namespace sptag {
@@ -49,10 +48,10 @@ namespace sptag {
             return true;
         }
 
-        long TagUidExtractor::get_uid_from_next_tag() {
+        wchar_t *TagUidExtractor::get_uid_from_next_tag() {
 
             if(m_nfc_reader == nullptr) {
-                return-1;
+                return nullptr;
             }
 
             const nfc_modulation nfc_mod_mifare = {
@@ -62,6 +61,7 @@ namespace sptag {
             if(nfc_initiator_select_passive_target(m_nfc_reader,
                     nfc_mod_mifare, NULL, 0, &m_past_nfc_tag)) {
                 std::string uid_string_buffer;
+                long uid_long_buffer;
 
                 unsigned long return_value;
 
@@ -72,10 +72,28 @@ namespace sptag {
                             static_cast<int>(byte)));
                 }
 
-                std::cout << uid_string_buffer << "\n";
-                return std::atol(uid_string_buffer.c_str());
+                std::cout << "uidString=" << uid_string_buffer << " length= " <<
+                                            uid_string_buffer.length() << "\n";
+
+                /*uid_long_buffer = std::stol(uid_string_buffer);
+
+                // Converts hex uid to decimal counterpart
+                std::cin >> std::hex >> uid_long_buffer;
+                std::cout << uid_long_buffer << std::endl;
+
+                std::cout << "uid=" << uid_long_buffer << "\n";
+
+                //uid_string_buffer = std::to_string(decimalValue);*/
+
+                wchar_t *returnValue = new wchar_t[17];
+                
+                mbstowcs(returnValue, uid_string_buffer.c_str(),
+                         16);
+                returnValue[uid_string_buffer.size()] = '\0';
+
+                return returnValue;
             } else {
-                return -1;
+                return nullptr;
             }
         }
     }

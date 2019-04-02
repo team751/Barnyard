@@ -13,7 +13,8 @@ extern "C" {
         return obj->init_device();
     }
 
-    long TagUidExtractor_get_uid_from_next_tag(sptag::nfc::TagUidExtractor *obj) {
+    wchar_t *TagUidExtractor_get_uid_from_next_tag(
+                                            sptag::nfc::TagUidExtractor *obj) {
         return obj->get_uid_from_next_tag();
     }
 }
