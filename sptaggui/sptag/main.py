@@ -2,13 +2,13 @@ import tkinter
 import os
 
 from sptag.gui.TagInfoScreen import TagInfoScreen
-from sptag.gui.TagEditorScreen import TagEditorScreen
+#from sptag.gui.TagEditorScreen import TagEditorScreen
 
 def main():
     window = tkinter.Tk()
-    #tag_info_screen = TagInfoScreen(window)
-    #tag_info_screen.start()
-    tag_editor_screen = TagEditorScreen(window)
+    tag_info_screen = TagInfoScreen(window)
+    tag_info_screen.start()
+    #tag_editor_screen = TagEditorScreen(window)
 
     window.mainloop()
 

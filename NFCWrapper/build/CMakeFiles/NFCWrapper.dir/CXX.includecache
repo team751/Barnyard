@@ -1,4 +1,4 @@
-#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
 
 #IncludeRegexScan: ^.*$
 
@@ -6,11 +6,15 @@
 
 #IncludeRegexTransform: 
 
-/home/bobby/CLionProjects/SpaceTag/NFCWrapper/sptag/nfc/taguidextractor.cpp
-taguidextractor.h
-/home/bobby/CLionProjects/SpaceTag/NFCWrapper/sptag/nfc/taguidextractor.h
+/home/pi/spacetag/NFCWrapper/ctypeswrapper.cpp
+sptag/nfc/taguidextractor.h
+/home/pi/spacetag/NFCWrapper/sptag/nfc/taguidextractor.h
 
-/home/bobby/CLionProjects/SpaceTag/NFCWrapper/sptag/nfc/taguidextractor.h
+/home/pi/spacetag/NFCWrapper/sptag/nfc/taguidextractor.cpp
+taguidextractor.h
+/home/pi/spacetag/NFCWrapper/sptag/nfc/taguidextractor.h
+
+/home/pi/spacetag/NFCWrapper/sptag/nfc/taguidextractor.h
 cmath
 -
 cstdlib
