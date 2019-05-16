@@ -1,1 +1,1 @@
-/usr/bin/c++ -fPIC   -shared -Wl,-soname,libNFCWrapper.so -o libNFCWrapper.so CMakeFiles/NFCWrapper.dir/ctypeswrapper.cpp.o CMakeFiles/NFCWrapper.dir/sptag/nfc/taguidextractor.cpp.o -lnfc 
+/usr/bin/c++  -fPIC   -shared -Wl,-soname,libNFCWrapper.so -o libNFCWrapper.so CMakeFiles/NFCWrapper.dir/ctypeswrapper.cpp.o CMakeFiles/NFCWrapper.dir/sptag/nfc/taguidextractor.cpp.o -lnfc 
