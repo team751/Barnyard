@@ -3,7 +3,7 @@ import _thread
 from os import getcwd
 from PIL import Image, ImageTk
 from tempfile import gettempdir
-from tkinter import Label
+from tkinter import Button, Label
 from urllib.request import urlretrieve
 
 from sptag.nfc.TagUidExtractor import TagUidExtractor
@@ -11,6 +11,8 @@ from sptag.sheets.UidSheetInfoModifier import UidSheetInfoModifier
 
 
 class TagInfoScreen():
+    _back_button = None
+    _main_screen = None
     _nfc_tap_label = None
     _part_info_label_list = []
     _part_info_image = None
@@ -66,13 +68,25 @@ class TagInfoScreen():
                 self.display_part(self._uid_sheet_info_modifier.
                                  get_part_info(next_uid), next_uid)
             
+    def go_back(self):
+        self._back_button.pack_forget()
+        self._nfc_tap_label.pack_forget()
+        
+        for label in self._part_info_label_list:
+            label.destroy()
+        
+        self._main_screen.close_current_screen()
 
     def _init_screen_elements(self):
-        self.nfc_tap_label = Label(self._window, text="Please tap an NFC tag")
+        self._back_button = Button(self._window, text="Back", 
+                                   command=self.go_back)
+        self._nfc_tap_label = Label(self._window, text="Please tap an NFC tag")
 
-        self.nfc_tap_label.pack()
+        self._back_button.pack()
+        self._nfc_tap_label.pack()
 
-    def __init__(self, window):
+    def __init__(self, main_screen, window):
+        self._main_screen = main_screen
         self._window = window
 
         self._init_screen_elements()
