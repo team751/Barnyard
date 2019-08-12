@@ -6,7 +6,11 @@ from sptag.nfc.TagUidExtractor import TagUidExtractor
 from sptag.sheets.UidSheetInfoModifier import UidSheetInfoModifier, \
                                               PartInfo
 
+import _thread
+
 class TagEditorScreen():
+    _back_button = None
+    
     _entry_list = []
     _tag_association_button = None
     _text_box_labels = []
@@ -17,6 +21,7 @@ class TagEditorScreen():
     _part_info = None
     _tag_uid_extractor = None
     
+    _main_screen = None
     _window = None
 
     def associate_tag(self):
@@ -42,9 +47,27 @@ class TagEditorScreen():
         
         if self._tag_uid_extractor.init_device():
             _thread.start_new_thread(self._get_next_nfc_tag_uid, 
-                                     (self, None))
+                                     ())
         else:
             print("ERROR: Couldn't initialize NFC reader/writer!")
+    
+    def go_back(self):
+        if self._association_label is not None:
+            self._association_label.pack_forget()
+        
+        self._back_button.pack_forget()
+        self._tag_association_button.pack_forget()
+        
+        for entry in self._entry_list:
+            entry.destroy()
+        
+        for label in self._text_box_labels:
+            label.destroy()
+        
+        self._entry_list.clear()
+        self._text_box_labels.clear()
+        
+        self._main_screen.close_current_screen()
 
     def _add_text_entry_label(self, i):
         if i == 0:
@@ -68,26 +91,31 @@ class TagEditorScreen():
             if next_uid != None:
                 self._part_info.uid = next_uid
                 
-                for text_box_label_index in \
-                    range(self._text_box_labels):
-                    current_label = self._text_box_labels[
-                                                   text_box_label_index]   
+                for entry_list_index in range(len(self._entry_list)):
+                    current_label = self._entry_list[entry_list_index]   
                     
-                    if text_box_label_index == 0:
+                    if entry_list_index == 0:
                         self._part_info.name = current_label.get()
-                    elif text_box_label_index == 1:
+                    elif entry_list_index == 1:
                         self._part_info.description = current_label.get(
                                                            "1.0", "end")
-                    elif text_box_label_index == 2:
+                    elif entry_list_index == 2:
                         self._part_info.location = current_label.get(
                                                            "1.0", "end")
-                    elif text_box_label_index == 3:
+                    elif entry_list_index == 3:
                         self._part_info.image_url = current_label.get(
                                                            "1.0", "end")
                 
                 uid_sheet_info_modifier.add_part(self._part_info)
+                
+                self.go_back()
+                
+                break
 
     def _init_screen_elements(self):
+        self._back_button = Button(self._window, text="Back", 
+                                   command=self.go_back)
+        
         for i in range(4):
             self._add_text_entry_label(i)
             
@@ -97,13 +125,16 @@ class TagEditorScreen():
                 self._entry_list.append(Text(self._window, width=20, 
                                              height=7))
 
+        self._back_button.pack()
+
         for entry_index in range(len(self._entry_list)):
             self._text_box_labels[entry_index].pack()
             self._entry_list[entry_index].pack()
 
-    def __init__(self, window):
+    def __init__(self, main_screen, window):
         self._part_info = PartInfo()
         
+        self._main_screen = main_screen
         self._window = window
 
         self._init_screen_elements()

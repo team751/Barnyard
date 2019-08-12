@@ -64,6 +64,8 @@ class UidSheetInfoModifier:
     def add_part(self, part_info):
         uidsFound = len(self._current_sheet.col_values(1))
         
+        print("Adding part...")
+        
         self._current_sheet.update_cell(uidsFound + 1, 1,
                                         part_info.uid)
         self._current_sheet.update_cell(uidsFound + 1, 2,
