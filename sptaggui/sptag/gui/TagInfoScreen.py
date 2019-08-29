@@ -59,7 +59,7 @@ class TagInfoScreen():
 
             part_info_label.pack()
 
-    def _get_next_nfc_tag_uid(self):
+    def _get_next_nfc_tag_uid(self, a, b):
         while True:
             next_uid = self._tag_uid_extractor.get_uid_from_next_tag()
 
@@ -95,6 +95,7 @@ class TagInfoScreen():
         self._uid_sheet_info_modifier = UidSheetInfoModifier()
 
         if self._tag_uid_extractor.init_device():
-            _thread.start_new_thread(self._get_next_nfc_tag_uid, (self, None))
+            _thread.start_new_thread(self._get_next_nfc_tag_uid, 
+                                     (self, None))
         else:
             print("ERROR: Couldn't initialize NFC reader/writer!")
