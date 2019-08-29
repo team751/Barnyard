@@ -1,5 +1,7 @@
 from os import getcwd
+from picamera import PiCamera
 from PIL import Image, ImageTk
+from time import sleep
 from tkinter import Button, Entry, Label, PhotoImage, StringVar, Text
 
 from sptag.nfc.TagUidExtractor import TagUidExtractor
@@ -10,6 +12,7 @@ import _thread
 
 class TagEditorScreen():
     _back_button = None
+    _camera = None
     
     _entry_list = []
     _tag_association_button = None
@@ -23,6 +26,16 @@ class TagEditorScreen():
     
     _main_screen = None
     _window = None
+
+
+    def take_photo(self):
+        self._camera = PiCamera()
+        
+        self._camera.start_preview(alpha=200)
+        sleep(5)
+        self._camera.capture("/home/pi/Pictures/Barnyard-2/" + \
+                             self._part_info.uid + ".jpg")
+        self._camera.stop_preview()
 
     def associate_tag(self):
         self._tag_uid_extractor = TagUidExtractor(getcwd() + 
@@ -106,6 +119,11 @@ class TagEditorScreen():
                         self._part_info.image_url = current_label.get(
                                                            "1.0", "end")
                 
+                if self._part_info.image_url == "\n":
+                    self._part_info.image_url = "locallystored"
+                    
+                    self.take_photo()
+                
                 uid_sheet_info_modifier.add_part(self._part_info)
                 
                 self.go_back()
@@ -140,7 +158,8 @@ class TagEditorScreen():
         self._init_screen_elements()
         
         self._tag_association_button = Button(self._window,
-                                              text="Associate with Tag",
+                                              text="Take Photo and " +
+                                              "Associate with Tag",
                                               command=self.associate_tag)
         self._tag_association_button.pack()
 
