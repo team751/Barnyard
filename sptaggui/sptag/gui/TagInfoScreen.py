@@ -21,11 +21,15 @@ class TagInfoScreen():
     _window = None
 
     def _generate_image_label(self, image_url, part_uid):
-        temp_image_file_name = gettempdir() + "/temp_" + str(part_uid) +  ".png"
+        if image_url == "locallystored":
+            image_file_name = "/home/pi/Pictures/Barnyard-2/" + part_uid + \
+                              ".jpg"
+        else:
+            image_file_name = gettempdir() + "/temp_" + str(part_uid) + ".png"
 
-        urlretrieve(image_url, temp_image_file_name)
+            urlretrieve(image_url, image_file_name)
 
-        pil_image = Image.open(temp_image_file_name)
+        pil_image = Image.open(image_file_name)
 
         self._part_info_image = ImageTk.PhotoImage(pil_image)
         self._part_info_label_list.append(Label(self._window,

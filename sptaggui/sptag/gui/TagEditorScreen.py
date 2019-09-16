@@ -1,5 +1,5 @@
 from os import getcwd
-from picamera import PiCamera
+#from picamera import PiCamera
 from PIL import Image, ImageTk
 from time import sleep
 from tkinter import Button, Entry, Label, PhotoImage, StringVar, Text
@@ -9,6 +9,7 @@ from sptag.sheets.UidSheetInfoModifier import UidSheetInfoModifier, \
                                               PartInfo
 
 import _thread
+
 
 class TagEditorScreen():
     _back_button = None
@@ -27,13 +28,12 @@ class TagEditorScreen():
     _main_screen = None
     _window = None
 
-
     def take_photo(self):  
         self._camera = PiCamera()
         
         self._camera.start_preview(alpha=200)
         sleep(5)
-        self._camera.capture("/home/pi/Pictures/Barnyard-2/" + \
+        self._camera.capture("/home/pi/Pictures/Barnyard-2/" +
                              self._part_info.uid + ".jpg")
         self._camera.stop_preview()
 
@@ -48,13 +48,14 @@ class TagEditorScreen():
         
         for text_box_label in self._text_box_labels:
             text_box_label.pack_forget()
-        
-        pil_image = Image.open("nfc-tap.png")
+
+        pil_image = Image.open(getcwd() + "/tap.png")
         
         self._association_label_image = ImageTk.PhotoImage(pil_image)
         self._association_label = Label(self._window, 
-                                image=self._association_label,
-                                text="Tap an NFC tag now to associate")
+                                        image=self._association_label_image,
+                                        text="Tap an NFC tag now to associate",
+                                        compound="top")
         
         self._association_label.pack()
         
