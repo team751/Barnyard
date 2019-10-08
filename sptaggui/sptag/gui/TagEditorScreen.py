@@ -99,6 +99,7 @@ class TagEditorScreen():
     
     def _get_next_nfc_tag_uid(self):
         while True:
+            edited = (part_info != PartInfo())
             next_uid = self._tag_uid_extractor.get_uid_from_next_tag()
             uid_sheet_info_modifier = UidSheetInfoModifier()
 
@@ -125,7 +126,10 @@ class TagEditorScreen():
                     
                     self.take_photo()
                 
-                uid_sheet_info_modifier.add_part(self._part_info)
+                if edited:
+                    uid_sheet_info_modifier.edit_part(self._part_info)
+                else:
+                    uid_sheet_info_modifier.add_part(self._part_info)
                 
                 self.go_back()
                 
@@ -140,9 +144,18 @@ class TagEditorScreen():
             
             if i == 0:
                 self._entry_list.append(Entry(self._window))
+                
+                if part_info.name is str:
+                    self._entry_list[-1].set(part_info.name)
             else:
                 self._entry_list.append(Text(self._window, width=20, 
                                              height=7))
+                if i == 1 and part_info.description is str:
+                    self._entry_list[-1].set(part_info.description)
+                elif i == 2 and part_info.location is str:
+                    self._entry_list[-1].set(part_info.location)
+                elif i == 3 and part_info.image_url is str:
+                    self._entry_list[-1].set(part_info.image_url)
 
         self._back_button.pack()
 
@@ -150,8 +163,11 @@ class TagEditorScreen():
             self._text_box_labels[entry_index].pack()
             self._entry_list[entry_index].pack()
 
-    def __init__(self, main_screen, window):
-        self._part_info = PartInfo()
+    def __init__(self, main_screen, window, part_info=None):
+        if part_info is None:
+            self._part_info = PartInfo()
+        else:
+            self._part_info = part_info
         
         self._main_screen = main_screen
         self._window = window

@@ -14,11 +14,14 @@ class TagInfoScreen():
     _back_button = None
     _main_screen = None
     _nfc_tap_label = None
+    _part_info_list = []
     _part_info_label_list = []
+    _part_info_button_list = []
     _part_info_image = None
     _tag_uid_extractor = None
     _uid_sheet_info_modifier = None
     _window = None
+    _first_time = False
 
     def _generate_image_label(self, image_url, part_uid):
         if image_url == "locallystored":
@@ -37,6 +40,8 @@ class TagInfoScreen():
 
     def display_part(self, part_info, uid):
         self._part_info_label_list.clear()
+        
+        self._part_info_list.append(part_info)
 
         if part_info is None:
             self._part_info_label_list.append(Label(self._window,
@@ -54,7 +59,14 @@ class TagInfoScreen():
             self._part_info_label_list.append(Label(self._window,
                                                 text="Location:" +
                                                      part_info.location))
-
+            self._first_time = True
+            _edit_button = None
+            _edit_button = Button(self._window,text="Edit " + part_info.name,
+                                  command=lambda name=part_info.name: \
+                                  self.edit_part(name))
+            self._part_info_label_list.append(_edit_button)
+            self._part_info_button_list.append(_edit_button)
+ 
             self._generate_image_label(part_info.image_url, part_info.uid)
 
         for part_info_label in self._part_info_label_list:
@@ -63,12 +75,19 @@ class TagInfoScreen():
 
             part_info_label.pack()
 
+    def edit_part(self, part_name):
+        for part_info in self._part_info_list:
+            if part_info.name == part_name:
+                self.go_back()
+                self._main_screen.register_tag(part_info)
+
     def _get_next_nfc_tag_uid(self, a, b):
         while True:
             next_uid = self._tag_uid_extractor.get_uid_from_next_tag()
 
             if next_uid != None:
                 print("id=" + next_uid)
+                
                 self.display_part(self._uid_sheet_info_modifier.
                                  get_part_info(next_uid), next_uid)
             
