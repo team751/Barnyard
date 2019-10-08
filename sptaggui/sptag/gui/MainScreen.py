@@ -24,7 +24,7 @@ class MainScreen():
 	
 	def __init__(self, window):
 		self._window = window
-		
+	
 		self._init_screen_elements()
 	
 	def close_current_screen(self):
@@ -33,11 +33,14 @@ class MainScreen():
 		
 		self._current_screen = None
 		
-	def register_tag(self):
+	def register_tag(self, part_info=None):
 		self._register_tag_button.grid_forget()
 		self._view_tag_button.grid_forget()
 		
-		self._current_screen = TagEditorScreen(self, self._window)
+		print(part_info)
+		
+		self._current_screen = TagEditorScreen(self, self._window, 
+											   part_info)
 	
 	def view_tag(self):
 		self._register_tag_button.grid_forget()

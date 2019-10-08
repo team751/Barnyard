@@ -10,7 +10,8 @@ from sptag.sheets.UidSheetInfoModifier import UidSheetInfoModifier, \
 from sptag.nfc.TagUidExtractor import TagUidExtractor
 from sptag.sheets.UidSheetInfoModifier import UidSheetInfoModifier
 import _thread
-class TagModifyScreen():
+
+class TagModifyScreen:
     _back_button = None
     _camera = None
     
@@ -31,6 +32,7 @@ class TagModifyScreen():
     _part_info_label_list = []
     _part_info_image = None
     _tag_uid_extractor = None
+    #_tag_label
     _uid_sheet_info_modifier = None
     #new
     next_uid = None
@@ -147,7 +149,13 @@ class TagModifyScreen():
                 
                 break
 		
-		
+    def _fill_editor_fields(self):
+        for i in range(4):
+            if i == 0:
+                self._entry_list[i].textvariable = \
+                                               self._part_info.description
+            else:
+                pass
 
     def _init_screen_elements(self):
         self._back_button = Button(self._window, text="Back", 
@@ -167,45 +175,23 @@ class TagModifyScreen():
         for entry_index in range(len(self._entry_list)):
             self._text_box_labels[entry_index].pack()
             self._entry_list[entry_index].pack()
+        
+        if self._part_info != PartInfo():
+            pass
 
-    def __init__(self, main_screen, window):
-        self._part_info = PartInfo()
+    def __init__(self, main_screen, window, part_info=None):
+        if part_info is None:
+            self._part_info = part_info
+        else:
+            self._part_info = PartInfo()
         
         self._main_screen = main_screen
         self._window = window
 
         self._init_screen_elements()
         
-        self._tag_association_button = Button(self._window,
-                                              text="Take Photo and " +
-                                              "Associate with Tag",
-                                              command=self.associate_tag)
-		self._edit_button = Button(self._window,
-									text = "Edit the information",
-									command=self._edit_part_info)
+        self._tag_label = Label(self._window, text="Tap an NFC Tag")
                                              
         self._tag_association_button.pack()
         self._edit_button.pack()
-
-	def display_part(self, part_info, uid):
-        self._part_info_label_list.clear()
-
-        if part_info is None:
-            self._part_info_label_list.append(Label(self._window,
-                                        text="Couldn't find UID in database!"))
-            self._part_info_label_list.append(Label(self._window,
-                                        text="UID Scanned =" + uid))
-        else:
-            self._part_info_label_list.append(Label(self._window,
-                                                text="UID:" + part_info.uid))
-            self._part_info_label_list.append(Label(self._window,
-                                                text="Name:" + part_info.name))
-            self._part_info_label_list.append(Label(self._window,
-                                                text="Description:" +
-                                                     part_info.description))
-            self._part_info_label_list.append(Label(self._window,
-                                                text="Location:" +
-                                                     part_info.location))
-
-            self._generate_image_label(part_info.image_url, part_info.uid)
 

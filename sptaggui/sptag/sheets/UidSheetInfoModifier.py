@@ -45,21 +45,6 @@ class UidSheetInfoModifier:
 
         # No UIDs representing this UID found in this table.
         return None
-
-    def get_part_info(self, uid):
-        rowNumToUse = self._uid_to_row_number(uid)
-
-        if rowNumToUse is None:
-            return None
-
-        partInfoArray = self._current_sheet.row_values(rowNumToUse + 1)
-
-        if len(partInfoArray) >= 5:
-            return PartInfo(partInfoArray[0], partInfoArray[1], 
-                            partInfoArray[2], partInfoArray[3], 
-                            partInfoArray[4])
-        else:
-            return None
     
     def add_part(self, part_info):
         uidsFound = len(self._current_sheet.col_values(1))
@@ -76,3 +61,36 @@ class UidSheetInfoModifier:
                                         part_info.location)
         self._current_sheet.update_cell(uidsFound + 1, 5,
                                         part_info.image_url)
+    
+    def edit_part(self, part_info):
+        rowNum = self._uid_to_row_number(part_info.uid)
+        
+        if rowNum is None:
+            add_part(part_info)
+        print("Editing part...")
+        
+        self._current_sheet.update_cell(rowNum, 1,
+                                        part_info.uid)
+        self._current_sheet.update_cell(rowNum, 2,
+                                        part_info.name)
+        self._current_sheet.update_cell(rowNum, 3,
+                                        part_info.description)
+        self._current_sheet.update_cell(rowNum, 4,
+                                        part_info.location)
+        self._current_sheet.update_cell(rowNum, 5,
+                                        part_info.image_url)
+
+    def get_part_info(self, uid):
+        rowNumToUse = self._uid_to_row_number(uid)
+
+        if rowNumToUse is None:
+            return None
+
+        partInfoArray = self._current_sheet.row_values(rowNumToUse + 1)
+
+        if len(partInfoArray) >= 5:
+            return PartInfo(partInfoArray[0], partInfoArray[1], 
+                            partInfoArray[2], partInfoArray[3], 
+                            partInfoArray[4])
+        else:
+            return None
