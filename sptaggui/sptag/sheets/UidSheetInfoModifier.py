@@ -8,6 +8,7 @@ SCOPES = ['https://spreadsheets.google.com/feeds',
          'https://www.googleapis.com/auth/drive']
 SPREADSHEET_KEY = "1zRSYqFLEEHLTDiMwv_tjmZ2aUK3V4LZ9E4OVBDFX_OI"
 
+
 class PartInfo(object):
     uid = None
     name = None
@@ -22,6 +23,7 @@ class PartInfo(object):
         self.description = description
         self.location = location
         self.image_url = image_url
+
 
 class UidSheetInfoModifier:
     _sheets_service = None
@@ -61,23 +63,30 @@ class UidSheetInfoModifier:
                                         part_info.location)
         self._current_sheet.update_cell(uidsFound + 1, 5,
                                         part_info.image_url)
-    
+
+    def delete_part(self, part_info):
+        row_num = self._uid_to_row_number(part_info.uid) + 1
+
+        if row_num is not None:
+            self._current_sheet.delete_row(row_num)
+
     def edit_part(self, part_info):
-        rowNum = self._uid_to_row_number(part_info.uid)
+        row_num = self._uid_to_row_number(part_info.uid) + 1
         
-        if rowNum is None:
-            add_part(part_info)
+        if row_num is None:
+            self.add_part(part_info)
+
         print("Editing part...")
         
-        self._current_sheet.update_cell(rowNum, 1,
+        self._current_sheet.update_cell(row_num, 1,
                                         part_info.uid)
-        self._current_sheet.update_cell(rowNum, 2,
+        self._current_sheet.update_cell(row_num, 2,
                                         part_info.name)
-        self._current_sheet.update_cell(rowNum, 3,
+        self._current_sheet.update_cell(row_num, 3,
                                         part_info.description)
-        self._current_sheet.update_cell(rowNum, 4,
+        self._current_sheet.update_cell(row_num, 4,
                                         part_info.location)
-        self._current_sheet.update_cell(rowNum, 5,
+        self._current_sheet.update_cell(row_num, 5,
                                         part_info.image_url)
 
     def get_part_info(self, uid):
