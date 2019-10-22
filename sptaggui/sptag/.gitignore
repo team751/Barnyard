@@ -1,2 +1,7 @@
 # ignore the credential file
-credentials.json
+client_secret.json
+
+__pycache__
+gui/__pycache__
+nfc/__pycache__
+sheets/__pycache__

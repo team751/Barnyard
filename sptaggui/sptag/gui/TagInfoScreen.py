@@ -18,7 +18,6 @@ class TagInfoScreen():
     _part_info_label_list = []
     _part_info_button_list = []
     _part_info_image = None
-    _tag_uid_extractor = None
     _uid_sheet_info_modifier = None
     _window = None
     _first_time = False
@@ -62,7 +61,7 @@ class TagInfoScreen():
             self._first_time = True
             _edit_button = None
             _edit_button = Button(self._window,text="Edit " + part_info.name,
-                                  command=lambda name=part_info.name: \
+                                  command=lambda name=part_info.name:
                                   self.edit_part(name))
             self._part_info_label_list.append(_edit_button)
             self._part_info_button_list.append(_edit_button)
@@ -83,13 +82,14 @@ class TagInfoScreen():
 
     def _get_next_nfc_tag_uid(self, a, b):
         while True:
-            next_uid = self._tag_uid_extractor.get_uid_from_next_tag()
+            next_uid = self._main_screen.tag_uid_extractor.get_uid_from_next_tag()
 
-            if next_uid != None:
+            if next_uid is not None:
                 print("id=" + next_uid)
                 
                 self.display_part(self._uid_sheet_info_modifier.
-                                 get_part_info(next_uid), next_uid)
+                                  get_part_info(next_uid), next_uid)
+                break
             
     def go_back(self):
         self._back_button.pack_forget()
@@ -117,8 +117,5 @@ class TagInfoScreen():
         self._tag_uid_extractor = TagUidExtractor(getcwd() + "/libNFCWrapper.so")
         self._uid_sheet_info_modifier = UidSheetInfoModifier()
 
-        if self._tag_uid_extractor.init_device():
-            _thread.start_new_thread(self._get_next_nfc_tag_uid, 
-                                     (self, None))
-        else:
-            print("ERROR: Couldn't initialize NFC reader/writer!")
+        _thread.start_new_thread(self._get_next_nfc_tag_uid,
+                                 (self, None))
