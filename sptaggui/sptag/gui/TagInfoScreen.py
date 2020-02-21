@@ -1,17 +1,21 @@
 import _thread
 
+import kivy
+kivy.require("1.11.0")
+
 from os import getcwd
-from PIL import Image, ImageTk
 from tempfile import gettempdir
-from tkinter import Button, Label
 from urllib.request import urlretrieve
 
-from sptag.nfc.TagUidExtractor import TagUidExtractor
+from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.screenmanager import Screen
+
 from sptag.sheets.UidSheetInfoModifier import UidSheetInfoModifier
 
 
-class TagInfoScreen():
+class TagInfoScreen(Screen):
     _back_button = None
+    _box_layout = None
     _main_screen = None
     _nfc_tap_label = None
     _part_info_list = []
@@ -108,13 +112,12 @@ class TagInfoScreen():
         self._back_button.pack()
         self._nfc_tap_label.pack()
 
-    def __init__(self, main_screen, window):
+    def __init__(self, main_screen):
+        self._box_layout = BoxLayout()
         self._main_screen = main_screen
-        self._window = window
 
         self._init_screen_elements()
 
-        self._tag_uid_extractor = TagUidExtractor(getcwd() + "/libNFCWrapper.so")
         self._uid_sheet_info_modifier = UidSheetInfoModifier()
 
         _thread.start_new_thread(self._get_next_nfc_tag_uid,

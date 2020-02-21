@@ -4,7 +4,7 @@ from ctypes import c_void_p
 from ctypes import cdll
 
 
-class TagUidExtractor():
+class TagUidExtractor:
     _nfc_library = None
     _obj = None
 
