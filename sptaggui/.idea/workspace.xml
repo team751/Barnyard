@@ -2,19 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b9ee2bc1-47f5-42d1-b90c-01ca24cfe839" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BarnyardApp.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libNFCWrapper.so" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sptaggui.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sptaggui.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client_secret.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libNFCWrapper.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nfc-tap.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/sptag/BarnyardApp.py" beforeDir="false" afterPath="$PROJECT_DIR$/sptag/BarnyardApp.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sptag/gui/MainScreen.py" beforeDir="false" afterPath="$PROJECT_DIR$/sptag/gui/MainScreen.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sptag/gui/TagEditorScreen.py" beforeDir="false" afterPath="$PROJECT_DIR$/sptag/gui/TagEditorScreen.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sptag/gui/TagInfoScreen.py" beforeDir="false" afterPath="$PROJECT_DIR$/sptag/gui/TagInfoScreen.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sptag/nfc/TagUidExtractor.py" beforeDir="false" afterPath="$PROJECT_DIR$/sptag/nfc/TagUidExtractor.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,13 +37,18 @@
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -61,6 +61,11 @@
         <option name="myModuleName" value="sptaggui" />
       </console-settings>
     </option>
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="Python3Local" type="PythonConfigurationType" factoryName="Python">
@@ -76,7 +81,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/sptag/main.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/sptag/BarnyardApp.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -113,21 +118,46 @@
       <workItem from="1582169982620" duration="103000" />
       <workItem from="1582170094103" duration="4893000" />
       <workItem from="1582268485418" duration="1532000" />
+      <workItem from="1584057305007" duration="6504000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2795" y="381" width="800" height="681" key="#Plugins" timestamp="1582170084654">
       <screen x="1920" y="0" width="2560" height="1440" />
     </state>
     <state x="2795" y="381" width="800" height="681" key="#Plugins/1920.0.2560.1440/0.360.1920.1080@1920.0.2560.1440" timestamp="1582170084654" />
+    <state x="422" y="195" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1584072663880">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="422" y="195" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1584072663880" />
     <state x="2933" y="482" width="524" height="506" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1582170579666">
       <screen x="1920" y="0" width="2560" height="1440" />
     </state>
     <state x="2933" y="482" width="524" height="506" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1920.0.2560.1440/0.360.1920.1080@1920.0.2560.1440" timestamp="1582170579666" />
+    <state x="746" y="302" width="424" height="487" key="FileChooserDialogImpl" timestamp="1584065458430">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="746" y="302" width="424" height="487" key="FileChooserDialogImpl/0.27.1920.1053@0.27.1920.1053" timestamp="1584065458430" />
+    <state width="1878" height="280" key="GridCell.Tab.0.bottom" timestamp="1584072517737">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1878" height="280" key="GridCell.Tab.0.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1584072517737" />
+    <state width="1878" height="280" key="GridCell.Tab.0.center" timestamp="1584072517737">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1878" height="280" key="GridCell.Tab.0.center/0.27.1920.1053@0.27.1920.1053" timestamp="1584072517737" />
+    <state width="1878" height="280" key="GridCell.Tab.0.left" timestamp="1584072517736">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1878" height="280" key="GridCell.Tab.0.left/0.27.1920.1053@0.27.1920.1053" timestamp="1584072517736" />
+    <state width="1878" height="280" key="GridCell.Tab.0.right" timestamp="1584072517737">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1878" height="280" key="GridCell.Tab.0.right/0.27.1920.1053@0.27.1920.1053" timestamp="1584072517737" />
     <state x="2689" y="368" width="1022" height="734" key="SettingsEditor" timestamp="1582170361059">
       <screen x="1920" y="0" width="2560" height="1440" />
     </state>
@@ -136,12 +166,17 @@
       <screen x="1920" y="0" width="2560" height="1440" />
     </state>
     <state x="2856" y="547" key="com.intellij.ide.util.TipDialog/1920.0.2560.1440/0.360.1920.1080@1920.0.2560.1440" timestamp="1582268517058" />
-    <state x="2863" y="439" width="672" height="678" key="search.everywhere.popup" timestamp="1582173828702">
-      <screen x="1920" y="0" width="2560" height="1440" />
+    <state x="666" y="163" width="588" height="774" key="find.popup" timestamp="1584071978892">
+      <screen x="0" y="27" width="1920" height="1053" />
     </state>
+    <state x="666" y="163" width="588" height="774" key="find.popup/0.27.1920.1053@0.27.1920.1053" timestamp="1584071978892" />
+    <state x="707" y="348" width="672" height="496" key="search.everywhere.popup" timestamp="1584058197288">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="707" y="348" width="672" height="496" key="search.everywhere.popup/0.27.1920.1053@0.27.1920.1053" timestamp="1584058197288" />
     <state x="2863" y="439" width="672" height="678" key="search.everywhere.popup/1920.0.2560.1440/0.360.1920.1080@1920.0.2560.1440" timestamp="1582173828702" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/sptaggui$Python3Local.coverage" NAME="Python3Local Coverage Results" MODIFIED="1571095351169" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/sptag" />
+    <SUITE FILE_PATH="coverage/sptaggui$Python3Local.coverage" NAME="Python3Local Coverage Results" MODIFIED="1584072517713" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/sptag" />
   </component>
 </project>

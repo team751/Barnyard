@@ -39,6 +39,7 @@ class MainScreen(Screen):
 
         self._box_layout = BoxLayout(orientation="vertical")
 
+        print(getcwd() + "/libNFCWrapper.so")
         self.tag_uid_extractor = TagUidExtractor(getcwd() +
                                                  "/libNFCWrapper.so")
 
