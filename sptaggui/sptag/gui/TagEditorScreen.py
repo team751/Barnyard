@@ -1,5 +1,5 @@
 import kivy
-kivy.require("1.11.0")
+kivy.require("1.9.1")
 
 from os import getcwd
 #from picamera import PiCamera
@@ -28,6 +28,8 @@ class TagEditorScreen(Screen):
     _tag_association_button = None
     _text_box_labels = []
     
+    _delete_part_button = None
+    
     _association_label = None
     _association_label_image = None
     
@@ -44,7 +46,7 @@ class TagEditorScreen(Screen):
                              self._part_info.uid + ".jpg")
         self._camera.stop_preview()
 
-    def associate_tag(self):
+    def associate_tag(self, instance):
         for entry in self._entry_list:
             self._box_layout.remove_widget(entry)
         
@@ -53,34 +55,42 @@ class TagEditorScreen(Screen):
         for text_box_label in self._text_box_labels:
             self._box_layout.remove_widget(text_box_label)
         
-        self._association_label_image = Image(source=getcwd() + "/tap.png")
-        self._association_label = Label(text="Tap an NFC tag now to associate")
+        if self._part_info.uid is None:
+            self._association_label_image = Image(source=getcwd() + "/tap.png")
+            self._association_label = Label(text="Tap an NFC tag now to associate")
 
-        self._box_layout.add_widget(self._association_label_image)
-        self._box_layout.add_widget(self._association_label)
+            self._box_layout.add_widget(self._association_label_image)
+            self._box_layout.add_widget(self._association_label)
 
-        _thread.start_new_thread(self._get_next_nfc_tag_uid,
-                                 ())
+            _thread.start_new_thread(self._get_next_nfc_tag_uid,
+                                     ())
+        else:
+           uid_sheet_info_modifier = UidSheetInfoModifier()
+           
+           self._update_part_info()
 
-    def delete_tag(self):
+           uid_sheet_info_modifier.add_part(self._part_info)
+                
+           self.go_back()
+
+    def delete_tag(self, instance):
         uid_sheet_info_modifier = UidSheetInfoModifier()
 
         uid_sheet_info_modifier.delete_part(self._part_info)
 
         self.go_back()
 
-    def go_back(self, edited=False):
-        # TODO(Bobby): Add sending signal code
-        pass
+    def go_back(self, notedited=True):
+        self._main_screen.switch_screen("main_screen")
 
-    def modify_tag(self):
+    def modify_tag(self, instance):
         uid_sheet_info_modifier = UidSheetInfoModifier()
 
         self._update_part_info()
 
         uid_sheet_info_modifier.edit_part(self._part_info)
 
-        self.go_back(True)
+        self.go_back(False)
 
     def _add_text_entry_label(self, i):
         if i == 0:
@@ -156,6 +166,7 @@ class TagEditorScreen(Screen):
 
         self._box_layout.add_widget(self._tag_association_button)
 
+
     def _update_part_info(self):
         for entry_list_index in range(len(self._entry_list)):
             current_label = self._entry_list[entry_list_index]
@@ -175,16 +186,36 @@ class TagEditorScreen(Screen):
 
             self.take_photo()
 
-    def __init__(self, main_screen, part_info=None):
+    def __init__(self, main_screen):
         super().__init__(name="Tag Editor Screen")
 
-        self._box_layout = BoxLayout(spacing=10)
-
-        if part_info is None:
-            self._part_info = PartInfo()
-        else:
-            self._part_info = part_info
+        self._box_layout = BoxLayout(orientation='vertical', spacing=10)
         
         self._main_screen = main_screen
+        
+        self.add_widget(self._box_layout)
+     
+    def part_init(self, part_info):
+        if self._back_button is not None:
+            self._box_layout.remove_widget(self._back_button)
+            self._back_button = None
+        
+        if self._delete_part_button is not None:
+            self._box_layout.remove_widget(self._delete_part_button)
+            self._delete_part_button = None
 
-        self._init_screen_elements(part_info is not None)
+        for entry_index in range(len(self._entry_list)):
+            self._box_layout.remove_widget(self._text_box_labels[entry_index])
+            self._box_layout.remove_widget(self._entry_list[entry_index])
+            
+        self._text_box_labels.clear()
+        self._entry_list.clear()
+        
+        if self._tag_association_button is not None:
+            self._box_layout.remove_widget(self._tag_association_button)
+            self._tag_association_button = None
+
+        self._part_info = part_info
+
+        self._init_screen_elements(part_info.name is not None)
+

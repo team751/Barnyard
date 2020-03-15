@@ -1,6 +1,7 @@
 import kivy
 kivy.require("1.11.0")
 
+import _thread
 import os
 
 from kivy.app import App
@@ -26,6 +27,6 @@ class BarnyardApp(App):
 		self.screens.append(TagInfoScreen(self.main_screen))
 
 		self.screen_manager.current = self.current_screen
-
+		
 if __name__ == '__main__':
 	BarnyardApp().run()

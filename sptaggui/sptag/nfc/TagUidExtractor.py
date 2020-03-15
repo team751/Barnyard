@@ -1,5 +1,5 @@
 from ctypes import c_bool
-from ctypes import c_wchar_p
+from ctypes import c_longlong
 from ctypes import c_void_p
 from ctypes import cdll
 
@@ -23,6 +23,6 @@ class TagUidExtractor:
         self._nfc_library.TagUidExtractor_get_uid_from_next_tag.argtypes = [
                                                                     c_void_p]
         self._nfc_library.TagUidExtractor_get_uid_from_next_tag.restype = \
-                                                                       c_wchar_p
+                                                                       c_longlong
 
-        return self._nfc_library.TagUidExtractor_get_uid_from_next_tag(self._obj)
+        return str(self._nfc_library.TagUidExtractor_get_uid_from_next_tag(self._obj))
