@@ -1,7 +1,7 @@
 import _thread
 
 import kivy
-kivy.require("1.11.0")
+kivy.require("1.9.1")
 
 from os import getcwd
 from tempfile import gettempdir
@@ -88,13 +88,12 @@ class TagInfoScreen(Screen):
                                   get_part_info(next_uid), next_uid)
                 break
             
-    def go_back(self):
-        # TODO(Bobby): Add sending signal code
-        self._main_screen.close_current_screen()
+    def go_back(self, instance):
+        self._main_screen.switch_screen("main_screen")
 
     def _init_screen_elements(self):
         self._back_button = Button(text="Back",
-                                   on_click=self.go_back)
+                                   on_press=self.go_back)
         self._nfc_tap_label = Label(text="Please tap an NFC tag")
 
         self._box_layout.add_widget(self._back_button)
@@ -103,9 +102,10 @@ class TagInfoScreen(Screen):
     def __init__(self, main_screen):
         super().__init__(name="Tag Info Screen")
 
-        self._box_layout = BoxLayout(spacing=10)
+        self._box_layout = BoxLayout(orientation='vertical', spacing=10)
         self._main_screen = main_screen
 
+        self.add_widget(self._box_layout)
         self._init_screen_elements()
 
         self._uid_sheet_info_modifier = UidSheetInfoModifier()

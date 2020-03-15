@@ -23,7 +23,7 @@ namespace sptag {
 
             bool init_device();
 
-            wchar_t *get_uid_from_next_tag();
+            long long get_uid_from_next_tag();
 
         private:
             nfc_device *m_nfc_reader;
