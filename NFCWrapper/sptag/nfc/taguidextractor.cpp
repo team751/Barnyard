@@ -48,10 +48,10 @@ namespace sptag {
             return true;
         }
 
-        wchar_t *TagUidExtractor::get_uid_from_next_tag() {
+        long long TagUidExtractor::get_uid_from_next_tag() {
 
             if(m_nfc_reader == nullptr) {
-                return nullptr;
+                return -1;
             }
 
             const nfc_modulation nfc_mod_mifare = {
@@ -61,10 +61,7 @@ namespace sptag {
             if(nfc_initiator_select_passive_target(m_nfc_reader,
                     nfc_mod_mifare, NULL, 0, &m_past_nfc_tag)) {
                 std::string uid_string_buffer;
-                long uid_long_buffer;
-
-                unsigned long return_value;
-
+                
                 for(uint8_t byte : m_past_nfc_tag.nti.nai.abtUid) {
                     // Get integer value of char NOT actual character
                     // representation
@@ -85,15 +82,19 @@ namespace sptag {
 
                 //uid_string_buffer = std::to_string(decimalValue);*/
 
-                wchar_t *returnValue = new wchar_t[17];
+                /*wchar_t *returnValue = new wchar_t[17];
                 
                 mbstowcs(returnValue, uid_string_buffer.c_str(),
                          16);
                 returnValue[uid_string_buffer.size()] = '\0';
 
-                return returnValue;
+                return returnValue;*/
+                
+                uid_string_buffer.resize(16);
+                
+                return std::stoll(uid_string_buffer, nullptr, 10);
             } else {
-                return nullptr;
+                return -1;
             }
         }
     }
