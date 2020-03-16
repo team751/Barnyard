@@ -1,17 +1,24 @@
 import _thread
 
+import kivy
+kivy.require("1.9.1")
+
 from os import getcwd
-from PIL import Image, ImageTk
 from tempfile import gettempdir
-from tkinter import Button, Label
 from urllib.request import urlretrieve
 
-from sptag.nfc.TagUidExtractor import TagUidExtractor
+from kivy.uix.button import Button
+from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.screenmanager import Screen
+from kivy.uix.image import Image
+from kivy.uix.label import Label
+
 from sptag.sheets.UidSheetInfoModifier import UidSheetInfoModifier
 
 
-class TagInfoScreen():
+class TagInfoScreen(Screen):
     _back_button = None
+    _box_layout = None
     _main_screen = None
     _nfc_tap_label = None
     _part_info_list = []
@@ -31,11 +38,7 @@ class TagInfoScreen():
 
             urlretrieve(image_url, image_file_name)
 
-        pil_image = Image.open(image_file_name)
-
-        self._part_info_image = ImageTk.PhotoImage(pil_image)
-        self._part_info_label_list.append(Label(self._window,
-                                                image=self._part_info_image))
+        self._part_info_label_list.append(Image(source=image_file_name))
 
     def display_part(self, part_info, uid):
         self._part_info_label_list.clear()
@@ -43,25 +46,19 @@ class TagInfoScreen():
         self._part_info_list.append(part_info)
 
         if part_info is None:
-            self._part_info_label_list.append(Label(self._window,
-                                        text="Couldn't find UID in database!"))
-            self._part_info_label_list.append(Label(self._window,
-                                        text="UID Scanned =" + uid))
+            self._part_info_label_list.append(Label(text="Couldn't find UID in database!"))
+            self._part_info_label_list.append(Label(text="UID Scanned =" + uid))
         else:
-            self._part_info_label_list.append(Label(self._window,
-                                                text="UID:" + part_info.uid))
-            self._part_info_label_list.append(Label(self._window,
-                                                text="Name:" + part_info.name))
-            self._part_info_label_list.append(Label(self._window,
-                                                text="Description:" +
+            self._part_info_label_list.append(Label(text="UID:" + part_info.uid))
+            self._part_info_label_list.append(Label(text="Name:" + part_info.name))
+            self._part_info_label_list.append(Label(text="Description:" +
                                                      part_info.description))
-            self._part_info_label_list.append(Label(self._window,
-                                                text="Location:" +
+            self._part_info_label_list.append(Label(text="Location:" +
                                                      part_info.location))
             self._first_time = True
             _edit_button = None
-            _edit_button = Button(self._window,text="Edit " + part_info.name,
-                                  command=lambda name=part_info.name:
+            _edit_button = Button(text="Edit " + part_info.name,
+                                  on_click=lambda name=part_info.name:
                                   self.edit_part(name))
             self._part_info_label_list.append(_edit_button)
             self._part_info_button_list.append(_edit_button)
@@ -72,7 +69,7 @@ class TagInfoScreen():
             # all objects part of this list should be a Label
             #assert part_info_label is Label
 
-            part_info_label.pack()
+            self._box_layout.add_widget(part_info_label)
 
     def edit_part(self, part_name):
         for part_info in self._part_info_list:
@@ -91,30 +88,26 @@ class TagInfoScreen():
                                   get_part_info(next_uid), next_uid)
                 break
             
-    def go_back(self):
-        self._back_button.pack_forget()
-        self._nfc_tap_label.pack_forget()
-        
-        for label in self._part_info_label_list:
-            label.destroy()
-        
-        self._main_screen.close_current_screen()
+    def go_back(self, instance):
+        self._main_screen.switch_screen("main_screen")
 
     def _init_screen_elements(self):
-        self._back_button = Button(self._window, text="Back", 
-                                   command=self.go_back)
-        self._nfc_tap_label = Label(self._window, text="Please tap an NFC tag")
+        self._back_button = Button(text="Back",
+                                   on_press=self.go_back)
+        self._nfc_tap_label = Label(text="Please tap an NFC tag")
 
-        self._back_button.pack()
-        self._nfc_tap_label.pack()
+        self._box_layout.add_widget(self._back_button)
+        self._box_layout.add_widget(self._nfc_tap_label)
 
-    def __init__(self, main_screen, window):
+    def __init__(self, main_screen):
+        super().__init__(name="Tag Info Screen")
+
+        self._box_layout = BoxLayout(orientation='vertical', spacing=10)
         self._main_screen = main_screen
-        self._window = window
 
+        self.add_widget(self._box_layout)
         self._init_screen_elements()
 
-        self._tag_uid_extractor = TagUidExtractor(getcwd() + "/libNFCWrapper.so")
         self._uid_sheet_info_modifier = UidSheetInfoModifier()
 
         _thread.start_new_thread(self._get_next_nfc_tag_uid,
