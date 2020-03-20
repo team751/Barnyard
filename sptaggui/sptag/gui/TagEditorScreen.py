@@ -2,7 +2,7 @@ import kivy
 kivy.require("1.9.1")
 
 from os import getcwd
-#from picamera import PiCamera
+from pathlib import Path
 from time import sleep
 
 from kivy.uix.button import Button
@@ -12,10 +12,12 @@ from kivy.uix.image import Image
 from kivy.uix.screenmanager import Screen
 from kivy.uix.textinput import TextInput
 
-from sptag.sheets.UidSheetInfoModifier import UidSheetInfoModifier, \
-                                              PartInfo
+from sptag.sheets.PartInfo import PartInfo
+from sptag.sheets.UidCsvInfoModifier import UidCsvInfoModifier
+from sptag.sheets.UidSheetInfoModifier import UidSheetInfoModifier
 
 import _thread
+import importlib
 
 
 class TagEditorScreen(Screen):
@@ -38,13 +40,29 @@ class TagEditorScreen(Screen):
     _main_screen = None
 
     def take_photo(self):
-        self._camera = PiCamera()
+        piCameraSpec = importlib.util.find_spec("picamera")
         
-        self._camera.start_preview(alpha=200)
-        sleep(5)
-        self._camera.capture("/home/pi/Pictures/Barnyard-2/" +
-                             self._part_info.uid + ".jpg")
-        self._camera.stop_preview()
+        if piCameraSpec is None:
+            from SimpleCV import Camera
+        
+            print("No PiCamera library found. Using opencv...")
+            self._camera = Camera()
+            
+            sleep(3)
+            image = self._camera.getImage()
+            image.save(str(Path.home()) + "/Barnyard-2/" +                 
+                       self._part_info.uid + ".png")
+        else:
+            from picamera import PiCamera
+            
+            print("PiCamera library found.")
+            self._camera = PiCamera()
+            
+            self._camera.start_preview(alpha=200)
+            sleep(5)
+            self._camera.capture(str(Path.home()) + "/Barnyard-2/" +
+                                 self._part_info.uid + ".jpg")
+            self._camera.stop_preview()
 
     def associate_tag(self, instance):
         for entry in self._entry_list:
@@ -65,7 +83,11 @@ class TagEditorScreen(Screen):
             _thread.start_new_thread(self._get_next_nfc_tag_uid,
                                      ())
         else:
-           uid_sheet_info_modifier = UidSheetInfoModifier()
+           try:
+                uid_sheet_info_modifier = UidSheetInfoModifier()
+           except:
+                # No connection... Use CSV Backup
+                uid_sheet_info_modifier = UidCsvInfoModifier()
            
            self._update_part_info()
 
@@ -74,7 +96,11 @@ class TagEditorScreen(Screen):
            self.go_back()
 
     def delete_tag(self, instance):
-        uid_sheet_info_modifier = UidSheetInfoModifier()
+        try:
+            uid_sheet_info_modifier = UidSheetInfoModifier()
+        except:
+            # No connection... Use CSV Backup
+            uid_sheet_info_modifier = UidCsvInfoModifier()
 
         uid_sheet_info_modifier.delete_part(self._part_info)
 
@@ -84,7 +110,11 @@ class TagEditorScreen(Screen):
         self._main_screen.switch_screen("main_screen")
 
     def modify_tag(self, instance):
-        uid_sheet_info_modifier = UidSheetInfoModifier()
+        try:
+            uid_sheet_info_modifier = UidSheetInfoModifier()
+        except:
+            # No connection... Use CSV Backup
+            uid_sheet_info_modifier = UidCsvInfoModifier()
 
         self._update_part_info()
 
@@ -106,7 +136,12 @@ class TagEditorScreen(Screen):
         while True:
             next_uid = self._main_screen.tag_uid_extractor.\
                 get_uid_from_next_tag()
-            uid_sheet_info_modifier = UidSheetInfoModifier()
+            
+            try:
+                uid_sheet_info_modifier = UidSheetInfoModifier()
+            except:
+                # No connection... Use CSV Backup
+                uid_sheet_info_modifier = UidCsvInfoModifier()
 
             if next_uid is not None:
                 self._part_info.uid = next_uid
