@@ -1,14 +1,17 @@
 import kivy
 kivy.require("1.9.1")
 
-from os import getcwd
 from pathlib import Path
 from time import sleep
+
+from kivy.core.window import Window
+
+from kivy.graphics.transformation import Matrix
 
 from kivy.uix.button import Button
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
-from kivy.uix.image import Image
+from kivy.uix.image import AsyncImage
 from kivy.uix.screenmanager import Screen
 from kivy.uix.textinput import TextInput
 
@@ -17,6 +20,7 @@ from sptag.sheets.UidCsvInfoModifier import UidCsvInfoModifier
 from sptag.sheets.UidSheetInfoModifier import UidSheetInfoModifier
 
 import _thread
+import os
 import importlib
 
 
@@ -39,30 +43,44 @@ class TagEditorScreen(Screen):
     
     _main_screen = None
 
+    def _adapt_keyboard(self, instance, value):
+        if instance.keyboard is not None:
+            instance.keyboard.widget.apply_transform(Matrix().scale(.65, .65, .65))
+
     def take_photo(self):
         piCameraSpec = importlib.util.find_spec("picamera")
-        
+
         if piCameraSpec is None:
             from SimpleCV import Camera
-        
+
             print("No PiCamera library found. Using opencv...")
             self._camera = Camera()
-            
-            sleep(3)
+
+            sleep(4)
             image = self._camera.getImage()
-            image.save(str(Path.home()) + "/Barnyard-2/" +                 
+            image.save(str(Path.home()) + "/Barnyard-2/" +
                        self._part_info.uid + ".png")
         else:
             from picamera import PiCamera
-            
+
             print("PiCamera library found.")
             self._camera = PiCamera()
-            
+
             self._camera.start_preview(alpha=200)
-            sleep(5)
+            self._camera.rotation = 270
+
+            sleep(4)
+
+            if os.path.isfile(str(Path.home()) + "/Barnyard-2/" +
+                              self._part_info.uid + ".jpg"):
+                os.remove(str(Path.home()) + "/Barnyard-2/" +
+                          self._part_info.uid + ".jpg")
+
             self._camera.capture(str(Path.home()) + "/Barnyard-2/" +
                                  self._part_info.uid + ".jpg")
             self._camera.stop_preview()
+
+            self._camera.close()
 
     def associate_tag(self, instance):
         for entry in self._entry_list:
@@ -74,7 +92,7 @@ class TagEditorScreen(Screen):
             self._box_layout.remove_widget(text_box_label)
         
         if self._part_info.uid is None:
-            self._association_label_image = Image(source=getcwd() + "/tap.png")
+            self._association_label_image = AsyncImage(source=os.getcwd() + "/tap.png")
             self._association_label = Label(text="Tap an NFC tag now to associate")
 
             self._box_layout.add_widget(self._association_label_image)
@@ -107,6 +125,7 @@ class TagEditorScreen(Screen):
         self.go_back()
 
     def go_back(self, notedited=True):
+        Window.release_all_keyboards()
         self._main_screen.switch_screen("main_screen")
 
     def modify_tag(self, instance):
@@ -190,6 +209,8 @@ class TagEditorScreen(Screen):
                 elif i == 3 and self._part_info.image_url is not None:
                     self._entry_list[-1].text = self._part_info.image_url
 
+            self._entry_list[-1].bind(focus=self._adapt_keyboard)
+
         self._box_layout.add_widget(self._back_button)
 
         if editing:
@@ -227,7 +248,7 @@ class TagEditorScreen(Screen):
         self._box_layout = BoxLayout(orientation='vertical', spacing=10)
         
         self._main_screen = main_screen
-        
+
         self.add_widget(self._box_layout)
      
     def part_init(self, part_info):
@@ -253,4 +274,3 @@ class TagEditorScreen(Screen):
         self._part_info = part_info
 
         self._init_screen_elements(part_info.name is not None)
-
