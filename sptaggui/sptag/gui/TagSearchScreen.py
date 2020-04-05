@@ -1,4 +1,7 @@
 from kivy.core.window import Window
+
+from kivy.graphics.transformation import Matrix
+
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.button import Button
 from kivy.uix.floatlayout import FloatLayout
@@ -34,6 +37,10 @@ class TagSearchScreen(Screen):
     
     _uid_sheet_info_modifier = None
 
+    def _adapt_keyboard(self, instance, value):
+        if instance.keyboard is not None:
+            instance.keyboard.widget.apply_transform(Matrix().scale(.65, .65, .65))
+
     def __init__(self, main_screen):
         super().__init__(name="Tag Searching Screen")
     
@@ -52,28 +59,31 @@ class TagSearchScreen(Screen):
         
         self._back_button = Button(text="Back", on_press=self.go_back)
         self._keyword_field = TextInput(multiline=False, on_text=self.on_search_query)
-        self._search_name_button = ToggleButton(text="by Name", group="search_type", state='down')
-        self._search_description_button = ToggleButton(text="by Description", group="search_type")
+        #self._search_name_button = ToggleButton(text="by Name", group="search_type", state='down')
+        #self._search_description_button = ToggleButton(text="by Description", group="search_type")
         self._search_label = Label(text="Enter search keyword")
-        self._search_location_button = ToggleButton(text="by Location", group="search_type")
-        
+        #self._search_location_button = ToggleButton(text="by Location", group="search_type")
+
+        self._keyword_field.bind(focus=self._adapt_keyboard)
+
         self.add_widget(self._box_layout)
         
         self._box_layout.add_widget(self._back_button)
         self._box_layout.add_widget(self._search_label)
         self._box_layout.add_widget(self._keyword_field)
-        self._box_layout.add_widget(self._radio_grid_layout)
+        #self._box_layout.add_widget(self._radio_grid_layout)
         self._box_layout.add_widget(self._float_layout)
         
         self._float_layout.add_widget(self._scroll_view)
         
-        self._scroll_view.add_widget(self._grid_layout)
+        #self._scroll_view.add_widget(self._grid_layout)
         
-        self._radio_grid_layout.add_widget(self._search_name_button)
-        self._radio_grid_layout.add_widget(self._search_description_button)
-        self._radio_grid_layout.add_widget(self._search_location_button)
+        #self._radio_grid_layout.add_widget(self._search_name_button)
+        #self._radio_grid_layout.add_widget(self._search_description_button)
+        #self._radio_grid_layout.add_widget(self._search_location_button)
 
     def go_back(self, instance):
+        print("back")
         self._main_screen.switch_screen("main_screen")
     
     def on_search_query(self, instance):
@@ -83,15 +93,12 @@ class TagSearchScreen(Screen):
         self._current_items.clear()
         self._search_item_widgets.clear()
         
-        regex_query = instance.text + "*"
-        
         if self._search_name_button.state == 'down':
-            self._current_items = self._uid_sheet_info_modifier.search_for_parts(name=regex_query)
+            self._current_items = self._uid_sheet_info_modifier.search_for_parts(name=instance.text)
         elif self._search_description_button.state == 'down':
-            self._current_items = self._uid_sheet_info_modifier.search_for_parts(description=regex_query)
+            self._current_items = self._uid_sheet_info_modifier.search_for_parts(description=instance.text)
         elif self._search_location_button.state == 'down':
-            self._current_items = self._uid_sheet_info_modifier.search_for_parts(location=regex_query)
+            self._current_items = self._uid_sheet_info_modifier.search_for_parts(location=instance.text)
         
         for item in self._current_items:
             pass
-        

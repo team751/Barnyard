@@ -23,4 +23,3 @@ class PartSheetModifierInterface:
     @abstractmethod
     def search_for_parts(self, name=None, description=None, location=None):
         raise NotImplementedError
-     

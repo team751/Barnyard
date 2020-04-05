@@ -1,9 +1,9 @@
 import kivy
 kivy.require("1.9.1")
 
-import os
 
 from kivy.app import App
+from kivy.config import Config
 from kivy.uix.screenmanager import ScreenManager
 
 from sptag.gui.MainScreen import MainScreen
@@ -26,7 +26,7 @@ class BarnyardApp(App):
 		self.screens.append(TagSearchScreen(self.main_screen))
 		
 		for screen in self.screens:
-		    self.screen_manager.add_widget(screen)
+			self.screen_manager.add_widget(screen)
 		
 		self.screen_manager.current = self.current_screen
 		
@@ -42,10 +42,11 @@ class BarnyardApp(App):
 			self.current_screen = "Main Screen"
 			self.main_screen.refresh_part_data()
 		elif screen_name == "search_tag":
-		    self.current_screen = "Tag Searching Screen"
+			self.current_screen = "Tag Searching Screen"
 		
 		self.screen_manager.current = self.current_screen
 		print("current_screen=" + self.current_screen)
-     
+
+
 if __name__ == '__main__':
 	BarnyardApp().run()

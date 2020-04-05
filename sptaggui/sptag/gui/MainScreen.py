@@ -2,15 +2,16 @@ import _thread
 import kivy
 kivy.require("1.9.1")
 
+import os
+
 from functools import partial
 from pathlib import Path
-from os import getcwd
 
 from kivy.uix.label import Label
 from kivy.uix.button import Button
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.screenmanager import Screen
-from kivy.uix.image import Image, AsyncImage
+from kivy.uix.image import AsyncImage
 
 from sptag.nfc.TagUidExtractor import TagUidExtractor
 from sptag.sheets.PartInfo import PartInfo
@@ -61,19 +62,18 @@ class MainScreen(Screen):
     def _generate_image(self, image_url):
         if image_url == "locallystored":
             if os.path.isfile(str(Path.home()) + "/Barnyard-2/" + self._part_uid + ".jpg"):
-                return Image(source=str(Path.home()) + "/Barnyard-2/" + self._part_uid + ".jpg")
+                return AsyncImage(source=str(Path.home()) + "/Barnyard-2/" + self._part_uid + ".jpg")
             else:
-                return Image(source=str(Path.home()) + "/Barnyard-2/" + self._part_uid + ".png")
+                return AsyncImage(source=str(Path.home()) + "/Barnyard-2/" + self._part_uid + ".png")
         elif "Not connected" in self._internet_status_label.text:
             # Offline mode: get downloaded image on hdd
             path = str(Path.home()) + "/Barnyard-2/" + "downloaded_" + self._part_uid + ".png"
             
             print(path)
             
-            return Image(source=path)
+            return AsyncImage(source=path)
         else:
             return AsyncImage(source=image_url)
-           
 
     def _init_screen_elements(self):
         self._instruction_label = Label(text="Scan NFC Part Tag")
@@ -97,8 +97,8 @@ class MainScreen(Screen):
 
         self._box_layout = BoxLayout(orientation="vertical")
 
-        print(getcwd() + "/libNFCWrapper.so")
-        self.tag_uid_extractor = TagUidExtractor(getcwd() +
+        print(os.getcwd() + "/libNFCWrapper.so")
+        self.tag_uid_extractor = TagUidExtractor(os.getcwd() +
                                                  "/libNFCWrapper.so")
 
         self.add_widget(self._box_layout)
@@ -159,25 +159,28 @@ class MainScreen(Screen):
         part_info = self._uid_sheet_info_modifier.get_part_info(self._part_uid)
     
         if part_info is None:
-            self._instruction_label.text = "No Part Found!"
-            self._register_tag_button.text = "Add Part"
+            if self._part_uid is None:
+                self.scan_tag()
+            else:
+                self._instruction_label.text = "No Part Found!"
+                self._register_tag_button.text = "Add Part"
+
+                part_info = PartInfo(self._part_uid)
+
+                for label in self._part_info_labels:
+                    self._box_layout.remove_widget(label)
+
+                self._part_info_labels.clear()
+
+                self._part_info_labels.append(Label(text="Tag UID:" + self._part_uid))
             
-            part_info = PartInfo(self._part_uid)
-            
-            for label in self._part_info_labels:
-                self._box_layout.remove_widget(label)
-            
-            self._part_info_labels.clear()
-            
-            self._part_info_labels.append(Label(text="Tag UID:" + self._part_uid))
-            
-            self._box_layout.add_widget(self._part_info_labels[0])
+                self._box_layout.add_widget(self._part_info_labels[0])
         else:
             self._instruction_label.text = "Part Found!"
             self._register_tag_button.text = "Modify/Delete Part"
             
             if len(self._part_info_labels) > 1:
-                self._box_layout.remove_widget(self._part_info_labels[4])
+                self._box_layout.remove_widget(self._part_info_labels[-1])
             
                 self._part_info_labels[1].text = "Name:" + part_info.name
                 self._part_info_labels[2].text = "Description:" + \
@@ -185,8 +188,8 @@ class MainScreen(Screen):
                 self._part_info_labels[3].text = "Location:" + part_info.location
                 
                 self._part_info_labels[4] = self._generate_image(part_info.image_url)
-                
-                self._box_layout.add_widget(self._part_info_labels[4])
+
+                self._box_layout.add_widget(self._part_info_labels[-1])
             else:
                 for label in self._part_info_labels:
                     self._box_layout.remove_widget(label)
@@ -200,13 +203,15 @@ class MainScreen(Screen):
                 self._part_info_labels.append(Label(text="Location:" +
                                                          part_info.location))
                 self._part_info_labels.append(self._generate_image(part_info.image_url))
-            
+
                 for label in self._part_info_labels:
                     self._box_layout.add_widget(label)
+
+            self._part_info_labels[-1].reload()
         
         if self._past_register_bind is not None:
             self._register_tag_button.unbind(on_press=self._past_register_bind)
-        
+
         self._past_register_bind = partial(self.register_tag, part_info) 
         
         self._register_tag_button.bind(on_press=self._past_register_bind)
