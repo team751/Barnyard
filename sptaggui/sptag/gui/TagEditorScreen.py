@@ -43,6 +43,8 @@ class TagEditorScreen(Screen):
     
     _main_screen = None
 
+    return_to_main_screen = True
+
     def _adapt_keyboard(self, instance, value):
         if instance.keyboard is not None:
             instance.keyboard.widget.apply_transform(Matrix().scale(.65, .65, .65))
@@ -126,7 +128,11 @@ class TagEditorScreen(Screen):
 
     def go_back(self, notedited=True):
         Window.release_all_keyboards()
-        self._main_screen.switch_screen("main_screen")
+
+        if self.return_to_main_screen:
+            self._main_screen.switch_screen("main_screen")
+        else:
+            self._main_screen.switch_screen("search_tag")
 
     def modify_tag(self, instance):
         try:

@@ -163,16 +163,20 @@ class UidSheetInfoModifier(PartSheetModifierInterface):
         return_value = []
 
         for row in self._current_sheet.get_all_values():
+            if row[0] is None or row[1] is None or row[2] is None or \
+                    row[3] is None or row[4] is None or row[0] == "UID":
+                continue
+
             found = True
 
             if name is not None:
-                found = row[1].startswith(name)
+                found = row[1].lower().startswith(name.lower())
 
             if description is not None:
-                found = row[2].startswith(name)
+                found = row[2].lower().startswith(description.lower())
 
             if location is not None:
-                found = row[3].startswith(name)
+                found = row[3].lower().startswith(location.lower())
 
             if found:
                 return_value.append(PartInfo(row[0], row[1], row[2], row[3],

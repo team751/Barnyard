@@ -82,7 +82,6 @@ class UidCsvInfoModifier(PartSheetModifierInterface):
                     print("Edit written")
                 else:
                     sheet_writer.writerow(row)
-            
 
     def get_part_info(self, uid):
         for row in self._get_csv_rows():
@@ -102,16 +101,22 @@ class UidCsvInfoModifier(PartSheetModifierInterface):
         return_value = []
 
         for row in self._get_csv_rows():
+            if row[0] is None or row[1] is None or row[2] is None or \
+                    row[3] is None or row[4] is None or row[0] == "UID":
+                continue
+
+            found = True
+
             found = True
 
             if name is not None:
-                found = row[1].startswith(name)
+                found = row[1].lower().startswith(name.lower())
 
             if description is not None:
-                found = row[2].startswith(name)
+                found = row[2].lower().startswith(description.lower())
 
             if location is not None:
-                found = row[3].startswith(name)
+                found = row[3].lower().startswith(location.lower())
 
             if found:
                 return_value.append(PartInfo(row[0], row[1], row[2], row[3],
