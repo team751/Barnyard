@@ -9,9 +9,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aab4e26b-f450-4bc6-ab10-4694c59c5ecb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="aab4e26b-f450-4bc6-ab10-4694c59c5ecb" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,18 +26,14 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="5856" />
-    <option name="width" value="527" />
-    <option name="height" value="679" />
-  </component>
   <component name="ProjectId" id="1Y3Sn3jYDijn8u4myZVsDWUezkL" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/sptaggui" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -79,20 +73,26 @@
       <workItem from="1552844468723" duration="628000" />
       <workItem from="1554162080297" duration="4327000" />
       <workItem from="1582169957058" duration="24000" />
+      <workItem from="1585948802540" duration="105000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2983" y="478" width="424" height="488" key="FileChooserDialogImpl" timestamp="1582169978906">
-      <screen x="1920" y="0" width="2560" height="1440" />
+    <state x="797" y="370" width="324" height="357" key="FileChooserDialogImpl" timestamp="1585948903783">
+      <screen x="0" y="27" width="1920" height="1053" />
     </state>
+    <state x="797" y="370" width="324" height="357" key="FileChooserDialogImpl/0.27.1920.1053/1920.0.1680.1050@0.27.1920.1053" timestamp="1585948903783" />
     <state x="2983" y="478" width="424" height="488" key="FileChooserDialogImpl/1920.0.2560.1440/0.360.1920.1080@1920.0.2560.1440" timestamp="1582169978906" />
     <state x="2856" y="547" key="com.intellij.ide.util.TipDialog" timestamp="1582169962356">
       <screen x="1920" y="0" width="2560" height="1440" />
     </state>
     <state x="2856" y="547" key="com.intellij.ide.util.TipDialog/1920.0.2560.1440/0.360.1920.1080@1920.0.2560.1440" timestamp="1582169962356" />
+    <state x="623" y="254" width="672" height="678" key="search.everywhere.popup" timestamp="1585948827684">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="623" y="254" width="672" height="678" key="search.everywhere.popup/0.27.1920.1053/1920.0.1680.1050@0.27.1920.1053" timestamp="1585948827684" />
   </component>
 </project>

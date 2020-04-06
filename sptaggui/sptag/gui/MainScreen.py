@@ -22,6 +22,8 @@ from pathlib import Path
 
 
 class MainScreen(Screen):
+    connected = True
+    screen_active = True
     tag_uid_extractor = None
 
     _box_layout = None
@@ -39,6 +41,23 @@ class MainScreen(Screen):
 
     _window = None
 
+    @staticmethod
+    def generate_image(image_url, part_uid, connected):
+        if image_url == "locallystored":
+            if os.path.isfile(str(Path.home()) + "/Barnyard-2/" + part_uid + ".jpg"):
+                return AsyncImage(source=str(Path.home()) + "/Barnyard-2/" + part_uid + ".jpg")
+            else:
+                return AsyncImage(source=str(Path.home()) + "/Barnyard-2/" + part_uid + ".png")
+        elif connected:
+            return AsyncImage(source=image_url)
+        else:
+            # Offline mode: get downloaded image on hdd
+            path = str(Path.home()) + "/Barnyard-2/" + "downloaded_" + part_uid + ".png"
+
+            print(path)
+
+            return AsyncImage(source=path)
+
     def _attempt_sheets_connection(self):
         if self._internet_status_label is None:
             self._internet_status_label = Label()
@@ -48,6 +67,8 @@ class MainScreen(Screen):
             
             self._internet_status_label.color = [0, 1, 0, 1]
             self._internet_status_label.text = "Connected to Google Sheets"
+
+            self.connected = True
         except:
             print("No connection")
             self._uid_sheet_info_modifier = UidCsvInfoModifier()
@@ -59,21 +80,7 @@ class MainScreen(Screen):
                                                get_last_update()
             self._internet_status_label.color = [1, 0, 0, 1]
 
-    def _generate_image(self, image_url):
-        if image_url == "locallystored":
-            if os.path.isfile(str(Path.home()) + "/Barnyard-2/" + self._part_uid + ".jpg"):
-                return AsyncImage(source=str(Path.home()) + "/Barnyard-2/" + self._part_uid + ".jpg")
-            else:
-                return AsyncImage(source=str(Path.home()) + "/Barnyard-2/" + self._part_uid + ".png")
-        elif "Not connected" in self._internet_status_label.text:
-            # Offline mode: get downloaded image on hdd
-            path = str(Path.home()) + "/Barnyard-2/" + "downloaded_" + self._part_uid + ".png"
-            
-            print(path)
-            
-            return AsyncImage(source=path)
-        else:
-            return AsyncImage(source=image_url)
+            self.connected = False
 
     def _init_screen_elements(self):
         self._instruction_label = Label(text="Scan NFC Part Tag")
@@ -115,7 +122,7 @@ class MainScreen(Screen):
 
     def _scanning_thread(self):
         print("scanning")
-        while True:
+        while self.screen_active:
             print("scanningnextuid")
             next_uid = self.tag_uid_extractor.get_uid_from_next_tag()
             print("UID GOT! " + next_uid)
@@ -130,8 +137,7 @@ class MainScreen(Screen):
     def scan_tag(self, instance=None):
         if self._instruction_label is None:
             return
-        
-        
+
         self._instruction_label.text = "Scan NFC Part Tag"
     
         for label in self._part_info_labels:
@@ -187,7 +193,9 @@ class MainScreen(Screen):
                                                   part_info.description
                 self._part_info_labels[3].text = "Location:" + part_info.location
                 
-                self._part_info_labels[4] = self._generate_image(part_info.image_url)
+                self._part_info_labels[4] = self.generate_image(part_info.image_url,
+                                                                self._part_uid,
+                                                                self.connected)
 
                 self._box_layout.add_widget(self._part_info_labels[-1])
             else:
@@ -202,7 +210,9 @@ class MainScreen(Screen):
                                                          part_info.description))
                 self._part_info_labels.append(Label(text="Location:" +
                                                          part_info.location))
-                self._part_info_labels.append(self._generate_image(part_info.image_url))
+                self._part_info_labels.append(self.generate_image(part_info.image_url,
+                                                                  self._part_uid,
+                                                                  self.connected))
 
                 for label in self._part_info_labels:
                     self._box_layout.add_widget(label)
