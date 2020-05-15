@@ -101,11 +101,13 @@ class UidCsvInfoModifier(PartSheetModifierInterface):
         return_value = []
 
         for row in self._get_csv_rows():
-            if row[0] is None or row[1] is None or row[2] is None or \
-                    row[3] is None or row[4] is None or row[0] == "UID":
+            try:
+                if row[0] is None or row[1] is None or \
+                        row[2] is None or row[3] is None or \
+                        row[4] is None or row[0] == "UID":
+                    continue
+            except IndexError:
                 continue
-
-            found = True
 
             found = True
 

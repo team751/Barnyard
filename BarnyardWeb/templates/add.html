@@ -1,0 +1,21 @@
+{% load bootstrap4 %}
+
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{% bootstrap_messages %}
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Add Part</li>
+  </ol>
+</nav>
+
+<div action="/" method="get" class="container">
+    <form action="{% url "add-view" %}" method="POST">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% bootstrap_button "Add New Part To Database" button_type="submit" button_class="btn-primary" %}
+    </form>
+</div>

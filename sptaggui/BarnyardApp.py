@@ -36,17 +36,23 @@ class BarnyardApp(App):
 		if screen_name == "register_tag":
 			self.current_screen = "Tag Editor Screen"
 			self.screens[1].part_init(data)
-			self.screens[1].return_to_main_screen = (self.screen_manager.current == "main_screen")
 		elif screen_name == "main_screen":
 			self.current_screen = "Main Screen"
-			self.main_screen.refresh_part_data()
+
+			if self.screen_manager.current == "Tag Searching Screen":
+				self.main_screen.scan_tag(None, False)
+			else:
+				self.main_screen.refresh_part_data()
 		elif screen_name == "search_tag":
 			self.current_screen = "Tag Searching Screen"
 			self.screens[2].connected = self.main_screen.connected
 
-		self.main_screen.screen_active = (screen_name == "main_screen")
+		self.screens[1].return_to_main_screen = (self.screen_manager.current == "Main Screen")
 		
 		self.screen_manager.current = self.current_screen
+
+		self.main_screen.screen_active = (self.screen_manager.current == "Main Screen")
+		
 		print("current_screen=" + self.current_screen)
 
 

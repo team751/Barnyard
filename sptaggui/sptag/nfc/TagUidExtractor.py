@@ -13,6 +13,12 @@ class TagUidExtractor:
         self._nfc_library.TagUidExtractor_new.restype = c_void_p
         self._obj = self._nfc_library.TagUidExtractor_new()
 
+    def __enter__(self):
+        pass
+
+    def __exit__(self, exc_type, exc_value, traceback):
+        self.destroy()
+
     def init_device(self):
         self._nfc_library.TagUidExtractor_init_device.argtypes = [c_void_p]
         self._nfc_library.TagUidExtractor_init_device.restype = c_bool
@@ -26,3 +32,8 @@ class TagUidExtractor:
                                                                        c_longlong
 
         return str(self._nfc_library.TagUidExtractor_get_uid_from_next_tag(self._obj))
+
+    def destroy(self):
+        self._nfc_library.TagUidExtractor_delete.argtypes = [c_void_p]
+
+        self._nfc_library.TagUidExtractor_delete(self._obj)

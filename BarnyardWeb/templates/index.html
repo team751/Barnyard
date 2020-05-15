@@ -1,0 +1,28 @@
+{% load bootstrap4 %}
+
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{% bootstrap_messages %}
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active" aria-current="page">Home</li>
+  </ol>
+</nav>
+
+<div class="jumbotron">
+    <h1 class="display-4">Barnyard-Web</h1>
+    <p class="lead">A modern new NFC-based part management system, now for the Web!</p>
+
+    <div action="/" method="get" class="container">
+        <form action="{% url "add-view" %}" method="POST">
+            {% csrf_token %}
+            {% bootstrap_button "Add Part" button_type="submit" button_class="btn-primary" %}
+        </form>
+        <form action="{% url "edit-view" %}" method="POST">
+            {% csrf_token %}
+            {% bootstrap_button "Edit/Get/Remove Part Info" button_type="submit" button_class="btn-primary" %}
+        </form>
+    </div>
+</div>

@@ -23,7 +23,7 @@ namespace sptag {
                 return false;
             }
 
-            std::clog << "SpaceTag v0.0.1 using libnfc " << nfc_version()
+            std::clog << "Barnyard v0.1.0 using libnfc " << nfc_version()
                       << "\n";
             std::clog << "Opening default nfc device...\n";
 

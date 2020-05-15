@@ -4,10 +4,15 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/bobby/CLionProjects/SpaceTag/NFCWrapper/ctypeswrapper.cpp" "/home/bobby/CLionProjects/SpaceTag/NFCWrapper/cmake-build-debug/CMakeFiles/NFCWrapper.dir/ctypeswrapper.cpp.o"
-  "/home/bobby/CLionProjects/SpaceTag/NFCWrapper/sptag/nfc/taguidextractor.cpp" "/home/bobby/CLionProjects/SpaceTag/NFCWrapper/cmake-build-debug/CMakeFiles/NFCWrapper.dir/sptag/nfc/taguidextractor.cpp.o"
+  "/home/bobby/Barnyard/NFCWrapper/ctypeswrapper.cpp" "/home/bobby/Barnyard/NFCWrapper/cmake-build-debug/CMakeFiles/NFCWrapper.dir/ctypeswrapper.cpp.o"
+  "/home/bobby/Barnyard/NFCWrapper/sptag/nfc/taguidextractor.cpp" "/home/bobby/Barnyard/NFCWrapper/cmake-build-debug/CMakeFiles/NFCWrapper.dir/sptag/nfc/taguidextractor.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
+
+# Preprocessor definitions for this target.
+set(CMAKE_TARGET_DEFINITIONS_CXX
+  "NFCWrapper_EXPORTS"
+  )
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
