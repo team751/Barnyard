@@ -39,7 +39,7 @@ class UidSheetInfoModifier(PartSheetModifierInterface):
             from_json_keyfile_name("client_secret.json", SCOPES)
 
         self._sheets_service = gspread.authorize(credentials)
-        self._current_sheet = self._sheets_service.open_by_key(SPREADSHEET_KEY).sheet1
+        self._current_sheet = self._sheets_service.open_by_key(SPREADSHEET_KEY).worksheet("Part Info")
 
         Path(str(Path.home()) + "/Barnyard-2/").mkdir(exist_ok=True)
 

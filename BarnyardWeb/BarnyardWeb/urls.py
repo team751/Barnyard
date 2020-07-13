@@ -15,12 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
 from Barnyard_Web.barnyard import views
 
 urlpatterns = [
     path('add/', views.AddView.as_view(), name='add-view'),
     path('admin/', admin.site.urls),
-    path('edit/', views.EditView.as_view(), name='edit-view'),
+    path('list/', views.ListView.as_view(), name='list-view'),
     path('', views.IndexView.as_view(), name='index-view')
 ]

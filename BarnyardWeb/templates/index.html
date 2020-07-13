@@ -20,7 +20,7 @@
             {% csrf_token %}
             {% bootstrap_button "Add Part" button_type="submit" button_class="btn-primary" %}
         </form>
-        <form action="{% url "edit-view" %}" method="POST">
+        <form action="{% url "list-view" %}" method="POST">
             {% csrf_token %}
             {% bootstrap_button "Edit/Get/Remove Part Info" button_type="submit" button_class="btn-primary" %}
         </form>

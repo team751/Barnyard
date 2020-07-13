@@ -7,15 +7,17 @@
 
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
     <li class="breadcrumb-item active" aria-current="page">Add Part</li>
   </ol>
 </nav>
 
-<div action="/" method="get" class="container">
+<div action="/add" method="post" class="container">
     <form action="{% url "add-view" %}" method="POST">
         {% csrf_token %}
         {% bootstrap_form form %}
+        {% buttons %}
         {% bootstrap_button "Add New Part To Database" button_type="submit" button_class="btn-primary" %}
+        {% endbuttons %}
     </form>
 </div>

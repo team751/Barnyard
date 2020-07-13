@@ -1,0 +1,24 @@
+{% load bootstrap4 %}
+
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{% bootstrap_messages %}
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Edit/Get/Remove Part Info</li>
+  </ol>
+</nav>
+
+<div action="/list" method="get" class="container">
+    <form action="{% url "list-view" %}" method="POST">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+    </form>
+
+    <div class="list-group">
+        {% for part in parts %}
+    </div>
+</div>
