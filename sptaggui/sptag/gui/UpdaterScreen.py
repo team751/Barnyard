@@ -57,13 +57,11 @@ class UpdaterScreen(Screen):
 
         releases_request.raise_for_status()
 
-        our_version = "v" + str(CURRENT_MAX_VERSION) + "." + str(CURRENT_MIN_VERSION) + str(CURRENT_PATCH_VERSION)
+        our_version = "v" + str(CURRENT_MAX_VERSION) + "." + str(CURRENT_MIN_VERSION) + "." + str(CURRENT_PATCH_VERSION)
         releases_json = releases_request.json()
 
         greatest_release_dict = None
         greatest_version = our_version
-
-        print("releases: " + str(releases_json))
 
         for release in releases_json:
             if not release["prerelease"] or UPDATER_CONSIDER_PRE_RELEASES:
@@ -79,8 +77,21 @@ class UpdaterScreen(Screen):
             return None
 
     def _download_update(self, release_dict: dict):
-        response = requests.get(release_dict["zipball_url"], stream=True)
-        total = int(response.headers.get("content-length"))
+        headers = {
+            "Accept": "application/octet-stream"
+        }
+
+        if UPDATER_KEY_PATH != "":
+            with open(UPDATER_KEY_PATH, 'r') as updater_key_file:
+                headers["Authorization"] = "token " + updater_key_file.read().strip("\n")
+
+        response = requests.get(release_dict["assets"][0]["url"], headers=headers, stream=True)
+
+        print(str(headers))
+
+        response.raise_for_status()
+
+        total = int(release_dict["assets"][0]["size"])
 
         with tempfile.NamedTemporaryFile(delete=False) as temp_file:
             zip_file_path = temp_file.name
@@ -99,7 +110,7 @@ class UpdaterScreen(Screen):
                     self._update_bar.value = downloaded / total
 
         with zipfile.ZipFile(zip_file_path, 'r') as zip_file:
-            script_path = os.path.realpath(__file__)
+            script_path = os.path.dirname(os.path.realpath(sys.modules['__main__'].__file__))
 
             print("Extracting to " + script_path)
 
@@ -132,11 +143,9 @@ class UpdaterScreen(Screen):
             self._update_label = Label(text="Downloading update " + self._current_update["tag_name"])
             self._update_bar = ProgressBar(max=100)
 
-            self.add_widget(self._box_layout)
-
             self._box_layout.add_widget(self._update_label)
             self._box_layout.add_widget(self._update_bar)
 
-            thread = threading.Thread(target=self._download_update, args=(self, self._current_update))
+            thread = threading.Thread(target=self._download_update, args=(self._current_update,))
 
             thread.start()
