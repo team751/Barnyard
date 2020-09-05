@@ -45,7 +45,7 @@ class BarnyardApp(App):
 		elif screen_name == "search_tag":
 			self.current_screen = "Tag Searching Screen"
 			self.screens[2].connected = self.main_screen.connected
-		elif screen_name == "update":
+		elif screen_name == "updater":
 			self.current_screen = "Updater Screen"
 			self.screens[3].start_update(data)
 

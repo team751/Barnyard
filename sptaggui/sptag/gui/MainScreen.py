@@ -137,7 +137,7 @@ class MainScreen(Screen):
         update = UpdaterScreen.get_update()
 
         if update is not None:
-            self._updater_button = Button(text="Update Barnyard", on_click=partial(self.update_barnyard, update))
+            self._updater_button = Button(text="Update Barnyard", on_press=partial(self.update_barnyard, update))
 
             self._box_layout.add_widget(self._updater_button)
 
