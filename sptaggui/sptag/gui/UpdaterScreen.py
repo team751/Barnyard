@@ -5,13 +5,13 @@ import tempfile
 import threading
 import zipfile
 
-from kivy.uix.anchorlayout import AnchorLayout
+from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
 from kivy.uix.progressbar import ProgressBar
 from kivy.uix.screenmanager import Screen
 
 from constants import CURRENT_MAX_VERSION, CURRENT_MIN_VERSION, CURRENT_PATCH_VERSION, GITHUB_API_LINK, \
-    UPDATER_CONSIDER_PRE_RELEASES, UPDATER_GITHUB_REPO
+    UPDATER_CONSIDER_PRE_RELEASES, UPDATER_GITHUB_REPO, UPDATER_KEY_PATH
 
 
 class UpdaterScreen(Screen):
@@ -46,7 +46,14 @@ class UpdaterScreen(Screen):
 
     @staticmethod
     def get_update():
-        releases_request = requests.get(GITHUB_API_LINK + "/repos/" + UPDATER_GITHUB_REPO + "/releases")
+        headers = {}
+
+        if UPDATER_KEY_PATH != "":
+            with open(UPDATER_KEY_PATH, 'r') as token_file:
+                headers["Authorization"] = "token " + token_file.read().strip("\n")
+
+        releases_request = requests.get(GITHUB_API_LINK + "/repos/" + UPDATER_GITHUB_REPO + "/releases",
+                                        headers=headers)
 
         releases_request.raise_for_status()
 
@@ -55,6 +62,8 @@ class UpdaterScreen(Screen):
 
         greatest_release_dict = None
         greatest_version = our_version
+
+        print("releases: " + str(releases_json))
 
         for release in releases_json:
             if not release["prerelease"] or UPDATER_CONSIDER_PRE_RELEASES:
@@ -109,20 +118,25 @@ class UpdaterScreen(Screen):
     def __init__(self):
         super().__init__(name="Updater Screen")
 
-        self._anchor_layout = AnchorLayout(anchor_x="center", anchor_y="center", spacing=10)
-        self._current_update = UpdaterScreen.get_update()
+        self._box_layout = BoxLayout(orientation='vertical', spacing=10)
+
+        self.add_widget(self._box_layout)
+
+    def start_update(self, update_dict: dict):
+        if update_dict is None:
+            self._current_update = UpdaterScreen.get_update()
+        else:
+            self._current_update = update_dict
 
         if self._current_update is not None:
             self._update_label = Label(text="Downloading update " + self._current_update["tag_name"])
             self._update_bar = ProgressBar(max=100)
 
-            self.add_widget(self._anchor_layout)
+            self.add_widget(self._box_layout)
 
-            self._anchor_layout.add_widget(self._update_label)
-            self._anchor_layout.add_widget(self._update_bar)
+            self._box_layout.add_widget(self._update_label)
+            self._box_layout.add_widget(self._update_bar)
 
             thread = threading.Thread(target=self._download_update, args=(self, self._current_update))
 
             thread.start()
-        else:
-            self._update_label = Label(text="All up to date!")

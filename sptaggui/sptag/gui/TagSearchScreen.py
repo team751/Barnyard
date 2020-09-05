@@ -44,7 +44,7 @@ class TagSearchScreen(Screen):
     _uid_sheet_info_modifier = None
 
     def _adapt_keyboard(self, instance, value):
-        if instance.keyboard is not None:
+        if instance.keyboard is not None and instance.keyboard.widget is not None:
             instance.keyboard.widget.apply_transform(Matrix().scale(.65, .65, .65))
 
     def _gather_results(self, data):
@@ -85,10 +85,10 @@ class TagSearchScreen(Screen):
     def __init__(self, main_screen):
         super().__init__(name="Tag Searching Screen")
     
-        try:
-            self._uid_sheet_info_modifier = UidSheetInfoModifier()
-        except:
-            self._uid_sheet_info_modifier = UidCsvInfoModifier()
+        #try:
+        self._uid_sheet_info_modifier = UidSheetInfoModifier()
+        #except:
+        #    self._uid_sheet_info_modifier = UidCsvInfoModifier()
         
         self._main_screen = main_screen
         

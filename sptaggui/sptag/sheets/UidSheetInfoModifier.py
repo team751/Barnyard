@@ -36,7 +36,7 @@ class UidSheetInfoModifier(PartSheetModifierInterface):
         except:
             return False
 
-    def __init__(self, download_lock: Lock):
+    def __init__(self, download_lock: Lock = None):
         credentials = ServiceAccountCredentials. \
             from_json_keyfile_name("client_secret.json", SCOPES)
 
@@ -77,20 +77,13 @@ class UidSheetInfoModifier(PartSheetModifierInterface):
         return None
 
     def add_part(self, part_info):
-        uidsFound = len(self._current_sheet.col_values(1))
+        row_num = str(len(self._current_sheet.col_values(1)) + 1)
 
         print("Adding part...")
 
-        self._current_sheet.update_cell(uidsFound + 1, 1,
-                                        part_info.uid)
-        self._current_sheet.update_cell(uidsFound + 1, 2,
-                                        part_info.name)
-        self._current_sheet.update_cell(uidsFound + 1, 3,
-                                        part_info.description)
-        self._current_sheet.update_cell(uidsFound + 1, 4,
-                                        part_info.location)
-        self._current_sheet.update_cell(uidsFound + 1, 5,
-                                        part_info.image_url)
+        self._current_sheet.update("A" + row_num + ":E" + row_num,
+                                   [[part_info.uid, part_info.name, part_info.description,
+                                    part_info.location, part_info.image_url]])
 
     def delete_part(self, part_info):
         row_num = self._uid_to_row_number(part_info.uid) + 1
@@ -99,23 +92,16 @@ class UidSheetInfoModifier(PartSheetModifierInterface):
             self._current_sheet.delete_row(row_num)
 
     def edit_part(self, part_info):
-        row_num = self._uid_to_row_number(part_info.uid) + 1
+        row_num = str(self._uid_to_row_number(part_info.uid) + 1)
 
         if row_num is None:
             self.add_part(part_info)
 
         print("Editing part...")
 
-        self._current_sheet.update_cell(row_num, 1,
-                                        part_info.uid)
-        self._current_sheet.update_cell(row_num, 2,
-                                        part_info.name)
-        self._current_sheet.update_cell(row_num, 3,
-                                        part_info.description)
-        self._current_sheet.update_cell(row_num, 4,
-                                        part_info.location)
-        self._current_sheet.update_cell(row_num, 5,
-                                        part_info.image_url)
+        self._current_sheet.update("A" + row_num + ":E" + row_num,
+                                   [[part_info.uid, part_info.name, part_info.description,
+                                     part_info.location, part_info.image_url]])
 
     def get_part_info(self, uid):
         rowNumToUse = self._uid_to_row_number(uid)
@@ -148,7 +134,8 @@ class UidSheetInfoModifier(PartSheetModifierInterface):
                 # disabling urllib3 dh key error on RPI 3
                 # https://stackoverflow.com/a/41041028
 
-                self._download_lock.acquire()
+                if self._download_lock is not None:
+                    self._download_lock.acquire()
 
                 requests.packages.urllib3.disable_warnings()
                 requests.packages.urllib3.util.ssl_.DEFAULT_CIPHERS += 'HIGH:!DH:!aNULL'
@@ -164,7 +151,8 @@ class UidSheetInfoModifier(PartSheetModifierInterface):
                           os.path.splitext(row[4])[-1], 'wb') as image_file:
                     image_file.write(image_page.content)
 
-                self._download_lock.release()
+                if self._download_lock is not None:
+                    self._download_lock.release()
             # urllib.request.urlretrieve(row[4], )
 
     def search_for_parts(self, name=None, description=None, location=None):
@@ -197,6 +185,7 @@ class UidSheetInfoModifier(PartSheetModifierInterface):
             offline_csv = csv.reader(csv_file)
 
             if overwrite:
+                ranges = []
                 rows = []
 
                 for i in range(len(self._current_sheet.get_all_values())):
@@ -207,11 +196,18 @@ class UidSheetInfoModifier(PartSheetModifierInterface):
 
                 for r in range(len(rows)):
                     if rows[r][0] != "Time Last Updated":
+                        current_range = {
+                            "range": "A" + str(r + 1) + chr(len(rows[r]) + 65),
+                            "values": [[]]
+                        }
+
                         for c in range(len(rows[r])):
-                            self._current_sheet.update_cell(r + 1, c + 1,
-                                                            rows[r][c])
+                            current_range["values"][0].append(rows[r][c])
+
+                        ranges.append(current_range)
             else:
                 parts = []
+                ranges = []
                 sheet_values = self._current_sheet.get_all_values()
 
                 for part in offline_csv:
@@ -220,11 +216,9 @@ class UidSheetInfoModifier(PartSheetModifierInterface):
                 for i in range(len(sheet_values)):
                     for i2 in range(len(parts)):
                         if part[i2][0] == sheet_values[i][0]:
-                            self._current_sheet.update_cell(i, 2,
-                                                            part[i2][1])
-                            self._current_sheet.update_cell(i, 3,
-                                                            part[i2][2])
-                            self._current_sheet.update_cell(i, 4,
-                                                            part[i2][3])
-                            self._current_sheet.update_cell(i, 5,
-                                                            part[i2][4])
+                            ranges.append({
+                                "range": "B" + str(i) + ":E" + str(i),
+                                "values": [[part[i2][1], part[i2][2], part[i2][3], part[i2][4]]]
+                            })
+
+                self._current_sheet.batch_update(ranges)
