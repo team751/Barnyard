@@ -2,6 +2,7 @@ CURRENT_MAX_VERSION = 1
 CURRENT_MIN_VERSION = 0
 CURRENT_PATCH_VERSION = 0
 
-GITHUB_API_LINK = "https://api.github.com/"
+GITHUB_API_LINK = "https://api.github.com"
 UPDATER_CONSIDER_PRE_RELEASES = False
 UPDATER_GITHUB_REPO = "team751/Barnyard"
+UPDATER_KEY_PATH = "githubupdaterkey.txt"

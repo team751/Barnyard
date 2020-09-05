@@ -7,6 +7,7 @@ from kivy.uix.screenmanager import ScreenManager
 from sptag.gui.MainScreen import MainScreen
 from sptag.gui.TagEditorScreen import TagEditorScreen
 from sptag.gui.TagSearchScreen import TagSearchScreen
+from sptag.gui.UpdaterScreen import UpdaterScreen
 
 
 class BarnyardApp(App):
@@ -22,6 +23,7 @@ class BarnyardApp(App):
 		self.screens.append(self.main_screen)
 		self.screens.append(TagEditorScreen(self.main_screen))
 		self.screens.append(TagSearchScreen(self.main_screen))
+		self.screens.append(UpdaterScreen())
 		
 		for screen in self.screens:
 			self.screen_manager.add_widget(screen)
@@ -43,6 +45,9 @@ class BarnyardApp(App):
 		elif screen_name == "search_tag":
 			self.current_screen = "Tag Searching Screen"
 			self.screens[2].connected = self.main_screen.connected
+		elif screen_name == "update":
+			self.current_screen = "Updater Screen"
+			self.screens[3].start_update(data)
 
 		self.main_screen.screen_active = (screen_name == "main_screen")
 		

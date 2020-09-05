@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b9ee2bc1-47f5-42d1-b90c-01ca24cfe839" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/constants.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sptag/gui/UpdaterScreen.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/discord.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/discord.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sptag/BarnyardApp.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sptag/gui/TagSearchScreen.py" beforeDir="false" afterPath="$PROJECT_DIR$/sptag/gui/TagSearchScreen.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/sptaggui$Python3Local.coverage" NAME="Python3Local Coverage Results" MODIFIED="1554161778071" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/sptag" />
+    <SUITE FILE_PATH="coverage/sptaggui$Unnamed.coverage" NAME="Python3Local Coverage Results" MODIFIED="1539638770803" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/sptag" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="SIGN_OFF_COMMIT" value="true" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file:///usr/local/lib/python3.8/dist-packages/django/forms/forms.py" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="JupyterTrust" id="85629a61-51b7-43d1-8a68-d438c2e75654" />
+  <component name="ProjectId" id="1Y3Sr6rekuC8GvbjVYQ1O9Nx17F" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/BarnyardApp.py" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="Console" />
+  </component>
+  <component name="PyConsoleOptionsProvider">
+    <option name="myPythonConsoleState">
+      <console-settings module-name="sptaggui" is-module-sdk="true">
+        <option name="myUseModuleSdk" value="true" />
+        <option name="myModuleName" value="sptaggui" />
+      </console-settings>
+    </option>
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.Python3Local">
+    <configuration name="Python3Local" type="PythonConfigurationType" factoryName="Python">
+      <module name="sptaggui" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="/usr/bin/python3" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/BarnyardApp.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python3Pi" type="PythonConfigurationType" factoryName="Python">
+      <module name="sptaggui" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="sftp://pi@192.168.1.135:22/usr/bin/python3" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/BarnyardApp.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.Python3Local" />
+      <item itemvalue="Python.Python3Pi" />
+    </list>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b9ee2bc1-47f5-42d1-b90c-01ca24cfe839" name="Default Changelist" comment="" />
+      <created>1539633047452</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1539633047452</updated>
+      <workItem from="1540258112034" duration="6276000" />
+      <workItem from="1540344204514" duration="6285000" />
+      <workItem from="1540352361907" duration="1092000" />
+      <workItem from="1540430596629" duration="3838000" />
+      <workItem from="1541312018225" duration="309000" />
+      <workItem from="1545861328357" duration="280000" />
+      <workItem from="1545862150055" duration="702000" />
+      <workItem from="1545881233136" duration="1282000" />
+      <workItem from="1545949314257" duration="2664000" />
+      <workItem from="1546051071720" duration="1181000" />
+      <workItem from="1549842921600" duration="30000" />
+      <workItem from="1552842890432" duration="1135000" />
+      <workItem from="1554161753573" duration="5160000" />
+      <workItem from="1571087712809" duration="7117000" />
+      <workItem from="1582169982620" duration="103000" />
+      <workItem from="1582170094103" duration="4893000" />
+      <workItem from="1582268485418" duration="1532000" />
+      <workItem from="1584057305007" duration="6504000" />
+      <workItem from="1585948910779" duration="756000" />
+      <workItem from="1585949842007" duration="924000" />
+      <workItem from="1585951102573" duration="8771000" />
+      <workItem from="1585971062393" duration="3514000" />
+      <workItem from="1586017108846" duration="3002000" />
+      <workItem from="1586020176933" duration="3055000" />
+      <workItem from="1586042344295" duration="8433000" />
+      <workItem from="1586122679291" duration="10700000" />
+      <workItem from="1595209814802" duration="2366000" />
+      <workItem from="1595213629473" duration="810000" />
+      <workItem from="1595311111412" duration="1801000" />
+      <workItem from="1595370885878" duration="16000" />
+      <workItem from="1595456381826" duration="13000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="422" y="210" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1595139305263">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="422" y="210" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.1920.1053/1920.0.1680.1050@0.27.1920.1053" timestamp="1595139305263" />
+    <state width="1878" height="280" key="GridCell.Tab.0.bottom" timestamp="1595193165737">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1878" height="280" key="GridCell.Tab.0.bottom/0.27.1920.1053/1920.0.1680.1050@0.27.1920.1053" timestamp="1595193165737" />
+    <state width="1878" height="280" key="GridCell.Tab.0.center" timestamp="1595193165737">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1878" height="280" key="GridCell.Tab.0.center/0.27.1920.1053/1920.0.1680.1050@0.27.1920.1053" timestamp="1595193165737" />
+    <state width="1878" height="280" key="GridCell.Tab.0.left" timestamp="1595193165736">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1878" height="280" key="GridCell.Tab.0.left/0.27.1920.1053/1920.0.1680.1050@0.27.1920.1053" timestamp="1595193165736" />
+    <state width="1878" height="280" key="GridCell.Tab.0.right" timestamp="1595193165737">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1878" height="280" key="GridCell.Tab.0.right/0.27.1920.1053/1920.0.1680.1050@0.27.1920.1053" timestamp="1595193165737" />
+    <state x="2057" y="-6" width="1331" height="1037" maximized="true" key="dock-window-1" timestamp="1595138037148">
+      <screen x="1920" y="0" width="1680" height="1050" />
+    </state>
+    <state x="2057" y="-6" width="1331" height="1037" maximized="true" key="dock-window-1/0.27.1920.1053/1920.0.1680.1050@0.27.1920.1053" timestamp="1595138037148" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/sptaggui$Python3Pi.coverage" NAME="Python3Pi Coverage Results" MODIFIED="1586296778361" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/sptaggui$Python3Local.coverage" NAME="Python3Local Coverage Results" MODIFIED="1595139307264" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+</project>

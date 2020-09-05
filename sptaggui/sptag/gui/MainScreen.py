@@ -15,6 +15,7 @@ from kivy.uix.image import AsyncImage, Image
 
 from threading import Lock
 
+from sptag.gui.UpdaterScreen import UpdaterScreen
 from sptag.nfc.TagUidExtractor import TagUidExtractor
 from sptag.sheets.PartInfo import PartInfo
 from sptag.sheets.UidCsvInfoModifier import UidCsvInfoModifier
@@ -38,6 +39,7 @@ class MainScreen(Screen):
     _search_tag_button = None
     _signal_sender = None
     _uid_sheet_info_modifier = None
+    _updater_button = None
 
     _part_info_labels = []
     _part_uid = None
@@ -45,8 +47,9 @@ class MainScreen(Screen):
     _window = None
 
     @staticmethod
-    def generate_image(image_url, part_uid, connected, lock):
-        lock.acquire()
+    def generate_image(image_url, part_uid, connected, lock=None):
+        if lock is not None:
+            lock.acquire()
 
         if image_url == "locallystored":
             if os.path.isfile(str(Path.home()) + "/Barnyard-2/" + part_uid + ".jpg"):
@@ -67,7 +70,8 @@ class MainScreen(Screen):
 
             return_value = AsyncImage(source=path)
 
-        lock.release()
+        if lock is not None:
+            lock.release()
 
         return return_value
 
@@ -129,6 +133,13 @@ class MainScreen(Screen):
             self.error_label = Label(text="FATAL ERROR: Couldn't initialize " +
                                           "NFC reader/writer!")
             self._box_layout.add_widget(self.error_label)
+
+        update = UpdaterScreen.get_update()
+
+        if update is not None:
+            self._updater_button = Button(text="Update Barnyard", on_click=partial(self.update_barnyard, update))
+
+            self._box_layout.add_widget(self._updater_button)
 
     def switch_screen(self, screen_name, data=None):
         self._signal_sender.switch_screen(screen_name, data)
@@ -248,3 +259,7 @@ class MainScreen(Screen):
         print(part_info.name)
         self.switch_screen("register_tag", part_info)
 
+    def update_barnyard(self, update_dict: dict, instance):
+        print("Update: " + str(update_dict))
+
+        self.switch_screen("updater", update_dict)

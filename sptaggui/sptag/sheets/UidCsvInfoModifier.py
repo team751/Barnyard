@@ -107,8 +107,6 @@ class UidCsvInfoModifier(PartSheetModifierInterface):
 
             found = True
 
-            found = True
-
             if name is not None:
                 found = row[1].lower().startswith(name.lower())
 
