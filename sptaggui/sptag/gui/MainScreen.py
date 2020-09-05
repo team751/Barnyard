@@ -79,25 +79,25 @@ class MainScreen(Screen):
         if self._internet_status_label is None:
             self._internet_status_label = Label()
     
-        #try:
+        try:
             self._uid_sheet_info_modifier = UidSheetInfoModifier(self._download_lock)
             
             self._internet_status_label.color = [0, 1, 0, 1]
             self._internet_status_label.text = "Connected to Google Sheets"
 
             self.connected = True
-        #except:
-        #    print("No connection")
-        #    self._uid_sheet_info_modifier = UidCsvInfoModifier()
+        except:
+            print("No connection")
+            self._uid_sheet_info_modifier = UidCsvInfoModifier()
             
-        #    self._internet_status_label.text = "Not connected to Google " +\
-        #                                       "Sheets. Using backed up CSV " +\
-        #                                       "file last modified at " +\
-        #                                       self._uid_sheet_info_modifier.\
-        #                                       get_last_update()
-        #    self._internet_status_label.color = [1, 0, 0, 1]
+            self._internet_status_label.text = "Not connected to Google " +\
+                                               "Sheets. Using backed up CSV " +\
+                                               "file last modified at " +\
+                                               self._uid_sheet_info_modifier.\
+                                               get_last_update()
+            self._internet_status_label.color = [1, 0, 0, 1]
 
-        #    self.connected = False
+            self.connected = False
 
     def _init_screen_elements(self):
         self._instruction_label = Label(text="Scan NFC Part Tag")
