@@ -1,21 +1,28 @@
 import kivy
 kivy.require("1.9.1")
 
-from os import getcwd
-#from picamera import PiCamera
+from pathlib import Path
 from time import sleep
 
+from kivy.core.window import Window
+
+from kivy.graphics.transformation import Matrix
+
+from kivy.uix.camera import Camera
 from kivy.uix.button import Button
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
-from kivy.uix.image import Image
+from kivy.uix.image import AsyncImage
 from kivy.uix.screenmanager import Screen
 from kivy.uix.textinput import TextInput
 
-from sptag.sheets.UidSheetInfoModifier import UidSheetInfoModifier, \
-                                              PartInfo
+from sptag.sheets.PartInfo import PartInfo
+from sptag.sheets.UidCsvInfoModifier import UidCsvInfoModifier
+from sptag.sheets.UidSheetInfoModifier import UidSheetInfoModifier
 
 import _thread
+import os
+import importlib
 
 
 class TagEditorScreen(Screen):
@@ -37,14 +44,50 @@ class TagEditorScreen(Screen):
     
     _main_screen = None
 
+    return_to_main_screen = True
+
+    def _adapt_keyboard(self, instance, value):
+        if instance.keyboard is not None and instance.keyboard.widget is not None:
+            instance.keyboard.widget.apply_transform(Matrix().scale(.65, .65, .65))
+
     def take_photo(self):
-        self._camera = PiCamera()
-        
-        self._camera.start_preview(alpha=200)
-        sleep(5)
-        self._camera.capture("/home/pi/Pictures/Barnyard-2/" +
-                             self._part_info.uid + ".jpg")
-        self._camera.stop_preview()
+        dir_path = str(Path.home()) + "/Barnyard-2/"
+
+        piCameraSpec = importlib.util.find_spec("picamera")
+
+        os.makedirs(dir_path, exist_ok=True)
+
+        if os.path.isfile(dir_path + self._part_info.uid + ".jpg"):
+            os.remove(dir_path + self._part_info.uid + ".jpg")
+
+        if os.path.isfile(dir_path + self._part_info.uid + ".png"):
+            os.remove(dir_path + self._part_info.uid + ".png")
+
+        if piCameraSpec is None:
+            print("No PiCamera library found. Using kivy...")
+
+            self._camera = Camera(play=True)
+            self._box_layout.add_widget(self._camera)
+
+            sleep(4)
+            image = self._camera
+
+            image.export_to_png(dir_path + self._part_info.uid + ".png")
+        else:
+            from picamera import PiCamera
+
+            print("PiCamera library found.")
+            self._camera = PiCamera()
+
+            self._camera.start_preview(alpha=200)
+            self._camera.rotation = 270
+
+            sleep(4)
+
+            self._camera.capture(dir_path + self._part_info.uid + ".jpg")
+            self._camera.stop_preview()
+
+            self._camera.close()
 
     def associate_tag(self, instance):
         for entry in self._entry_list:
@@ -56,7 +99,7 @@ class TagEditorScreen(Screen):
             self._box_layout.remove_widget(text_box_label)
         
         if self._part_info.uid is None:
-            self._association_label_image = Image(source=getcwd() + "/tap.png")
+            self._association_label_image = AsyncImage(source=os.getcwd() + "/tap.png")
             self._association_label = Label(text="Tap an NFC tag now to associate")
 
             self._box_layout.add_widget(self._association_label_image)
@@ -65,7 +108,11 @@ class TagEditorScreen(Screen):
             _thread.start_new_thread(self._get_next_nfc_tag_uid,
                                      ())
         else:
-           uid_sheet_info_modifier = UidSheetInfoModifier()
+           try:
+                uid_sheet_info_modifier = UidSheetInfoModifier()
+           except:
+                # No connection... Use CSV Backup
+                uid_sheet_info_modifier = UidCsvInfoModifier()
            
            self._update_part_info()
 
@@ -74,17 +121,30 @@ class TagEditorScreen(Screen):
            self.go_back()
 
     def delete_tag(self, instance):
-        uid_sheet_info_modifier = UidSheetInfoModifier()
+        try:
+            uid_sheet_info_modifier = UidSheetInfoModifier()
+        except:
+            # No connection... Use CSV Backup
+            uid_sheet_info_modifier = UidCsvInfoModifier()
 
         uid_sheet_info_modifier.delete_part(self._part_info)
 
         self.go_back()
 
     def go_back(self, notedited=True):
-        self._main_screen.switch_screen("main_screen")
+        Window.release_all_keyboards()
+
+        if self.return_to_main_screen:
+            self._main_screen.switch_screen("main_screen")
+        else:
+            self._main_screen.switch_screen("search_tag")
 
     def modify_tag(self, instance):
-        uid_sheet_info_modifier = UidSheetInfoModifier()
+        try:
+            uid_sheet_info_modifier = UidSheetInfoModifier()
+        except:
+            # No connection... Use CSV Backup
+            uid_sheet_info_modifier = UidCsvInfoModifier()
 
         self._update_part_info()
 
@@ -106,7 +166,12 @@ class TagEditorScreen(Screen):
         while True:
             next_uid = self._main_screen.tag_uid_extractor.\
                 get_uid_from_next_tag()
-            uid_sheet_info_modifier = UidSheetInfoModifier()
+            
+            try:
+                uid_sheet_info_modifier = UidSheetInfoModifier()
+            except:
+                # No connection... Use CSV Backup
+                uid_sheet_info_modifier = UidCsvInfoModifier()
 
             if next_uid is not None:
                 self._part_info.uid = next_uid
@@ -155,6 +220,8 @@ class TagEditorScreen(Screen):
                 elif i == 3 and self._part_info.image_url is not None:
                     self._entry_list[-1].text = self._part_info.image_url
 
+            self._entry_list[-1].bind(focus=self._adapt_keyboard)
+
         self._box_layout.add_widget(self._back_button)
 
         if editing:
@@ -192,7 +259,7 @@ class TagEditorScreen(Screen):
         self._box_layout = BoxLayout(orientation='vertical', spacing=10)
         
         self._main_screen = main_screen
-        
+
         self.add_widget(self._box_layout)
      
     def part_init(self, part_info):
@@ -218,4 +285,3 @@ class TagEditorScreen(Screen):
         self._part_info = part_info
 
         self._init_screen_elements(part_info.name is not None)
-
