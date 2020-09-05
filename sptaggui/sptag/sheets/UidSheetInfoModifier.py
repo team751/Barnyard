@@ -10,6 +10,7 @@ import urllib.parse
 import gspread
 
 from pathlib import Path
+from threading import Lock
 
 from oauth2client.service_account import ServiceAccountCredentials
 
@@ -23,8 +24,9 @@ SPREADSHEET_KEY = "1zRSYqFLEEHLTDiMwv_tjmZ2aUK3V4LZ9E4OVBDFX_OI"
 
 
 class UidSheetInfoModifier(PartSheetModifierInterface):
-    _sheets_service = None
     _current_sheet = None
+    _download_lock = None
+    _sheets_service = None
 
     @staticmethod
     def is_url(url):
@@ -34,12 +36,14 @@ class UidSheetInfoModifier(PartSheetModifierInterface):
         except:
             return False
 
-    def __init__(self):
+    def __init__(self, download_lock: Lock):
         credentials = ServiceAccountCredentials. \
             from_json_keyfile_name("client_secret.json", SCOPES)
 
         self._sheets_service = gspread.authorize(credentials)
+
         self._current_sheet = self._sheets_service.open_by_key(SPREADSHEET_KEY).sheet1
+        self._download_lock = download_lock
 
         Path(str(Path.home()) + "/Barnyard-2/").mkdir(exist_ok=True)
 
@@ -144,6 +148,8 @@ class UidSheetInfoModifier(PartSheetModifierInterface):
                 # disabling urllib3 dh key error on RPI 3
                 # https://stackoverflow.com/a/41041028
 
+                self._download_lock.acquire()
+
                 requests.packages.urllib3.disable_warnings()
                 requests.packages.urllib3.util.ssl_.DEFAULT_CIPHERS += 'HIGH:!DH:!aNULL'
                 try:
@@ -157,6 +163,8 @@ class UidSheetInfoModifier(PartSheetModifierInterface):
                 with open(str(Path.home()) + "/Barnyard-2/downloaded_" + row[0] +
                           os.path.splitext(row[4])[-1], 'wb') as image_file:
                     image_file.write(image_page.content)
+
+                self._download_lock.release()
             # urllib.request.urlretrieve(row[4], )
 
     def search_for_parts(self, name=None, description=None, location=None):

@@ -8,6 +8,7 @@ from kivy.core.window import Window
 
 from kivy.graphics.transformation import Matrix
 
+from kivy.uix.camera import Camera
 from kivy.uix.button import Button
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
@@ -46,22 +47,32 @@ class TagEditorScreen(Screen):
     return_to_main_screen = True
 
     def _adapt_keyboard(self, instance, value):
-        if instance.keyboard is not None:
+        if instance.keyboard is not None and instance.keyboard.widget is not None:
             instance.keyboard.widget.apply_transform(Matrix().scale(.65, .65, .65))
 
     def take_photo(self):
+        dir_path = str(Path.home()) + "/Barnyard-2/"
+
         piCameraSpec = importlib.util.find_spec("picamera")
 
-        if piCameraSpec is None:
-            from SimpleCV import Camera
+        os.makedirs(dir_path, exist_ok=True)
 
-            print("No PiCamera library found. Using opencv...")
-            self._camera = Camera()
+        if os.path.isfile(dir_path + self._part_info.uid + ".jpg"):
+            os.remove(dir_path + self._part_info.uid + ".jpg")
+
+        if os.path.isfile(dir_path + self._part_info.uid + ".png"):
+            os.remove(dir_path + self._part_info.uid + ".png")
+
+        if piCameraSpec is None:
+            print("No PiCamera library found. Using kivy...")
+
+            self._camera = Camera(play=True)
+            self._box_layout.add_widget(self._camera)
 
             sleep(4)
-            image = self._camera.getImage()
-            image.save(str(Path.home()) + "/Barnyard-2/" +
-                       self._part_info.uid + ".png")
+            image = self._camera
+
+            image.export_to_png(dir_path + self._part_info.uid + ".png")
         else:
             from picamera import PiCamera
 
@@ -73,13 +84,7 @@ class TagEditorScreen(Screen):
 
             sleep(4)
 
-            if os.path.isfile(str(Path.home()) + "/Barnyard-2/" +
-                              self._part_info.uid + ".jpg"):
-                os.remove(str(Path.home()) + "/Barnyard-2/" +
-                          self._part_info.uid + ".jpg")
-
-            self._camera.capture(str(Path.home()) + "/Barnyard-2/" +
-                                 self._part_info.uid + ".jpg")
+            self._camera.capture(dir_path + self._part_info.uid + ".jpg")
             self._camera.stop_preview()
 
             self._camera.close()

@@ -17,6 +17,7 @@ from sptag.gui.MainScreen import MainScreen
 
 import _thread
 
+
 class TagSearchScreen(Screen):
     connected = True
 

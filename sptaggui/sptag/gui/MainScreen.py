@@ -11,7 +11,9 @@ from kivy.uix.label import Label
 from kivy.uix.button import Button
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.screenmanager import Screen
-from kivy.uix.image import AsyncImage
+from kivy.uix.image import AsyncImage, Image
+
+from threading import Lock
 
 from sptag.nfc.TagUidExtractor import TagUidExtractor
 from sptag.sheets.PartInfo import PartInfo
@@ -27,6 +29,7 @@ class MainScreen(Screen):
     tag_uid_extractor = None
 
     _box_layout = None
+    _download_lock = None
     _instruction_label = None
     _internet_status_label = None
     _new_tag_button = None
@@ -42,45 +45,55 @@ class MainScreen(Screen):
     _window = None
 
     @staticmethod
-    def generate_image(image_url, part_uid, connected):
+    def generate_image(image_url, part_uid, connected, lock):
+        lock.acquire()
+
         if image_url == "locallystored":
             if os.path.isfile(str(Path.home()) + "/Barnyard-2/" + part_uid + ".jpg"):
-                return AsyncImage(source=str(Path.home()) + "/Barnyard-2/" + part_uid + ".jpg")
+                path = str(Path.home()) + "/Barnyard-2/" + part_uid + ".jpg"
+
+                return_value = AsyncImage(source=path)
             else:
-                return AsyncImage(source=str(Path.home()) + "/Barnyard-2/" + part_uid + ".png")
+                path = str(Path.home()) + "/Barnyard-2/" + part_uid + ".png"
+
+                return_value = AsyncImage(source=path)
         elif connected:
-            return AsyncImage(source=image_url)
+            return_value = AsyncImage(source=image_url)
         else:
             # Offline mode: get downloaded image on hdd
             path = str(Path.home()) + "/Barnyard-2/" + "downloaded_" + part_uid + ".png"
 
             print(path)
 
-            return AsyncImage(source=path)
+            return_value = AsyncImage(source=path)
+
+        lock.release()
+
+        return return_value
 
     def _attempt_sheets_connection(self):
         if self._internet_status_label is None:
             self._internet_status_label = Label()
     
-        try:
-            self._uid_sheet_info_modifier = UidSheetInfoModifier()
+        #try:
+            self._uid_sheet_info_modifier = UidSheetInfoModifier(self._download_lock)
             
             self._internet_status_label.color = [0, 1, 0, 1]
             self._internet_status_label.text = "Connected to Google Sheets"
 
             self.connected = True
-        except:
-            print("No connection")
-            self._uid_sheet_info_modifier = UidCsvInfoModifier()
+        #except:
+        #    print("No connection")
+        #    self._uid_sheet_info_modifier = UidCsvInfoModifier()
             
-            self._internet_status_label.text = "Not connected to Google " +\
-                                               "Sheets. Using backed up CSV " +\
-                                               "file last modified at " +\
-                                               self._uid_sheet_info_modifier.\
-                                               get_last_update()
-            self._internet_status_label.color = [1, 0, 0, 1]
+        #    self._internet_status_label.text = "Not connected to Google " +\
+        #                                       "Sheets. Using backed up CSV " +\
+        #                                       "file last modified at " +\
+        #                                       self._uid_sheet_info_modifier.\
+        #                                       get_last_update()
+        #    self._internet_status_label.color = [1, 0, 0, 1]
 
-            self.connected = False
+        #    self.connected = False
 
     def _init_screen_elements(self):
         self._instruction_label = Label(text="Scan NFC Part Tag")
@@ -93,11 +106,11 @@ class MainScreen(Screen):
         
         self._box_layout.add_widget(self._instruction_label)
         self._box_layout.add_widget(self._internet_status_label)
-
  
     def __init__(self, signal_sender):
         super().__init__(name="Main Screen")
 
+        self._download_lock = Lock()
         self._signal_sender = signal_sender
        
         self._attempt_sheets_connection()
@@ -195,7 +208,8 @@ class MainScreen(Screen):
                 
                 self._part_info_labels[4] = self.generate_image(part_info.image_url,
                                                                 self._part_uid,
-                                                                self.connected)
+                                                                self.connected,
+                                                                self._download_lock)
 
                 self._box_layout.add_widget(self._part_info_labels[-1])
             else:
@@ -212,7 +226,8 @@ class MainScreen(Screen):
                                                          part_info.location))
                 self._part_info_labels.append(self.generate_image(part_info.image_url,
                                                                   self._part_uid,
-                                                                  self.connected))
+                                                                  self.connected,
+                                                                  self._download_lock))
 
                 for label in self._part_info_labels:
                     self._box_layout.add_widget(label)
