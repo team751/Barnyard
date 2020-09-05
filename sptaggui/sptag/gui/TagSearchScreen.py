@@ -85,10 +85,10 @@ class TagSearchScreen(Screen):
     def __init__(self, main_screen):
         super().__init__(name="Tag Searching Screen")
     
-        #try:
-        self._uid_sheet_info_modifier = UidSheetInfoModifier()
-        #except:
-        #    self._uid_sheet_info_modifier = UidCsvInfoModifier()
+        try:
+            self._uid_sheet_info_modifier = UidSheetInfoModifier()
+        except:
+            self._uid_sheet_info_modifier = UidCsvInfoModifier()
         
         self._main_screen = main_screen
         

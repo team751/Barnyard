@@ -52,8 +52,11 @@ class UpdaterScreen(Screen):
             with open(UPDATER_KEY_PATH, 'r') as token_file:
                 headers["Authorization"] = "token " + token_file.read().strip("\n")
 
-        releases_request = requests.get(GITHUB_API_LINK + "/repos/" + UPDATER_GITHUB_REPO + "/releases",
-                                        headers=headers)
+        try:
+            releases_request = requests.get(GITHUB_API_LINK + "/repos/" + UPDATER_GITHUB_REPO + "/releases",
+                                            headers=headers)
+        except requests.exceptions.ConnectionError:
+            return None
 
         releases_request.raise_for_status()
 
