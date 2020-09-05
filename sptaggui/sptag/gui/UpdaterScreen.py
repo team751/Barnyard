@@ -38,7 +38,7 @@ class UpdaterScreen(Screen):
             if version_nums[1] > version_nums_2[1]:
                 return True
             elif version_nums[1] == version_nums_2[1]:
-                return version_nums[2] >= version_nums_2[2]
+                return version_nums[2] > version_nums_2[2]
             else:
                 return False
         else:
