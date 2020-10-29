@@ -1,3 +1,0 @@
-/home/pi/spacetag/build/CMakeFiles/rebuild_cache.dir
-/home/pi/spacetag/build/CMakeFiles/edit_cache.dir
-/home/pi/spacetag/build/CMakeFiles/SpaceTag.dir
