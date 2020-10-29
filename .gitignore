@@ -1,6 +1,7 @@
 **/client_secret.json
 **/githubupdaterkey.txt
 **/*.zip
-build/CMakeFiles
-build/CmakeCache.txt
-build/cmake_install.cmake
+**/__pycache__
+build/*
+build/NFCWrapper/build
+build/NFCWrapper/cmake-build-debug
