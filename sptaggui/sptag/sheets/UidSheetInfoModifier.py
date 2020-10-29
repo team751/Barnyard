@@ -14,13 +14,14 @@ from threading import Lock
 
 from oauth2client.service_account import ServiceAccountCredentials
 
+from constants import GOOGLE_AUTH_JSON_PATH, GOOGLE_SPREADSHEET_KEY
+
 from sptag.sheets.PartInfo import PartInfo
 from sptag.sheets.PartSheetModifierInterface import PartSheetModifierInterface
 from sptag.sheets.UidCsvInfoModifier import UidCsvInfoModifier
 
 SCOPES = ['https://spreadsheets.google.com/feeds',
           'https://www.googleapis.com/auth/drive']
-SPREADSHEET_KEY = "1zRSYqFLEEHLTDiMwv_tjmZ2aUK3V4LZ9E4OVBDFX_OI"
 
 
 class UidSheetInfoModifier(PartSheetModifierInterface):
@@ -38,11 +39,11 @@ class UidSheetInfoModifier(PartSheetModifierInterface):
 
     def __init__(self, download_lock: Lock = None):
         credentials = ServiceAccountCredentials. \
-            from_json_keyfile_name("client_secret.json", SCOPES)
+            from_json_keyfile_name(GOOGLE_AUTH_JSON_PATH, SCOPES)
 
         self._sheets_service = gspread.authorize(credentials)
 
-        self._current_sheet = self._sheets_service.open_by_key(SPREADSHEET_KEY).sheet1
+        self._current_sheet = self._sheets_service.open_by_key(GOOGLE_SPREADSHEET_KEY).sheet1
         self._download_lock = download_lock
 
         Path(str(Path.home()) + "/Barnyard-2/").mkdir(exist_ok=True)
